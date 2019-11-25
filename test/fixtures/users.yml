@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  spotify_uuid: MyString
+  spotify_username: MyString
+  latitude: MyString
+  longitude: MyString
+  active_song: 1
+
+two:
+  spotify_uuid: MyString
+  spotify_username: MyString
+  latitude: MyString
+  longitude: MyString
+  active_song: 1
