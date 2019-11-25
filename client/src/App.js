@@ -7,7 +7,7 @@ import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
 
 // Mapbox base map URL
-const accessToken = 'pk.eyJ1IjoianVsaWFqNjIxIiwiYSI6ImNrM2VxeTM3YTAxNGMzY253YjQwZzI4dzgifQ.kPd5-63cgQtFaBXWjc4IWQ'
+const accessToken = 'pk.eyJ1IjoianVsaWFqNjIxIiwiYSI6ImNrM2VxdnlmbzAxM2MzaHBhOXQ2Z2RibTAifQ.dVzPBLFX3oJ1-DHsz4dCOA'
 const tileUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}'
 const attribution = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
 // Map settings
@@ -26,6 +26,19 @@ const customIcon = new L.Icon({
   iconUrl: require('./assets/marker.png'),
   iconSize: [25, 25]
 })
+
+// Get user's location
+// const getLocation = () => {
+  if ('geolocation' in navigator) {
+    navigator.geolocation.getCurrentPosition(
+      position => {
+         console.log(`Lat: ${position.coords.latitude} Lng: ${position.coords.longitude}`)},
+      err => alert(`Error (${err.code}): ${err.message}`)
+    );
+  } else {
+    alert('Geolocation is not supported by your browser.');
+  }
+// }
 
 class App extends Component {
   constructor(props) {
@@ -79,27 +92,31 @@ class App extends Component {
         id={'mapbox.light'}
         accessToken={accessToken}
       />
-      <MarkerClusterGroup
-            >
-          {/* {this.state.trees.map(tree => {
-            return (
-                <Marker
-                  key={`marker_${tree.properties.id}`}
-                  position={[tree.geometry.coordinates[1], tree.geometry.coordinates[0]]}
-                  icon={customIcon}
-                  style={{fontColor: '#edc4bc'}}
-                >
-                <Popup key={`pop_${tree.properties.id}`}>
-                  {tree.properties.common_name ? (<div>{`Common name: ${tree.properties.common_name}`}</div>) : null}
-                  {tree.properties.scientific_name ? (<div>{`Scientific name: ${tree.properties.scientific_name}`}</div>) : null}
-                  {tree.properties.fam_name ? (<div>{`Family: ${tree.properties.fam_name}`}</div>) : null}
-                  {tree.properties.genus_name ? (<div>{`Genus: ${tree.properties.genus_name}`}</div>) : null}
-                  {tree.properties.condition ? (<div>{`Condition: ${tree.properties.condition}`}</div>) : null}
-                  Address: {tree.properties.address}
-                </Popup>
-              </Marker>
-            )
-          })} */}
+      <MarkerClusterGroup>
+        <Marker
+          position={[49.2812, -123.1149]}
+          icon={customIcon}
+          style={{fontColor: '#edc4bc'}}
+        >
+        </Marker>
+        <Marker
+          position={[49.2812, -123.1149]}
+          icon={customIcon}
+          style={{fontColor: '#edc4bc'}}
+        >
+        </Marker>
+        <Marker
+          position={[49.2812, -123.1149]}
+          icon={customIcon}
+          style={{fontColor: '#edc4bc'}}
+        >
+        </Marker>
+        <Marker
+          position={[49.2812, -123.1149]}
+          icon={customIcon}
+          style={{fontColor: '#edc4bc'}}
+        >
+        </Marker>
       </MarkerClusterGroup>
       </Map>
     );
