@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Button from "components/Button";
+import Button from "../../Register/node_modules/components/Button";
 
 
 export default function LoginForm(props) {
@@ -24,7 +24,7 @@ export default function LoginForm(props) {
       return;
     }
     if (password === "") {
-      setError("Password cannot be blank");
+      setError("You must enter your password to continue.");
       return;
     }
 
@@ -54,12 +54,6 @@ export default function LoginForm(props) {
           interviewer={interviewer}
           setInterviewer={setInterviewer}
         /> */}
-      </section>
-      <section className="appointment__card-right">
-        <section className="appointment__actions">
-          <Button danger onClick={cancel}>Cancel</Button>
-          <Button confirm onClick={() => props.onSave(username, password)}>Save</Button>
-        </section>
       </section>
     </main>
   );

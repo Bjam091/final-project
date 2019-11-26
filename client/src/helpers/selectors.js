@@ -1,4 +1,4 @@
-function getTrack(state, track) {
+function getCurrentTrack(state, track) {
   if (!track) {
     return null;
   } else {
@@ -12,3 +12,4 @@ function getRecentlyPlayed(user) {
 
  return tracks;
 }
+

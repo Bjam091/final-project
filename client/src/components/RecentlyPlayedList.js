@@ -28,9 +28,9 @@ export default function RecentlyPlayedList(props) {
   })
 
   return (
-    <section className="interviewers">
-      <h4 className="interviewers__header text--light">Interviewer</h4>
-      <ul className="interviewers__list">
+    <section className="tracks">
+      <h4 className="recentlyplayed__header text--light">{track.title}</h4>
+      <ul className="recentlyplayed__list">
        {interviewers}
       </ul>
     </section>

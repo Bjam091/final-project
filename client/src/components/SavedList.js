@@ -19,7 +19,7 @@ export default function SavedList(props) {
       <SavedListItem
         key={track.id}
         id={track.id}
-        name={track.title}
+        title={track.title}
         album={track.album}
         selected={track.id === props.track}
         playTrack={props.playTrack}
@@ -29,9 +29,9 @@ export default function SavedList(props) {
   })
 
   return (
-    <section className="tracks">
-      <h4 className="tracks__header text--light">Playing Near You</h4>
-      <ul className="tracks__list">
+    <section className="pocket">
+      <h4 className="pocket__header text--light">My Pocket</h4>
+      <ul className="pocket__list">
        {tracks}
       </ul>
     </section>
