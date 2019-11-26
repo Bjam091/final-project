@@ -21,5 +21,14 @@ class User < ApplicationRecord
   
       binding.pry
     end
+
+    def get_recently_played
+      @user = self.find(1)
+      @access_token = @user.access_token
+
+      @response = HTTParty.get('https://api.spotify.com/v1/me/player/recently-played?limit=10', headers: {"Authorization": "Bearer #{@access_token}"})
+
+      binding.pry
+    end
   end
 end
