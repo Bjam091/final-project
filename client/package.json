@@ -4,9 +4,14 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-scripts": "2.1.8"
+    "leaflet": "^1.6.0",
+    "leaflet.markercluster": "^1.4.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.10.0",
+    "react-dom": "^16.10.0",
+    "react-leaflet": "^2.6.0",
+    "react-leaflet-markercluster": "^2.0.0-rc3",
+    "react-scripts": "3.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
