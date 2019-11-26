@@ -28,16 +28,45 @@ const customIcon = new L.Icon({
 })
 
 // Get user's location
-// const getLocation = () => {
-  if ('geolocation' in navigator) {
-    navigator.geolocation.getCurrentPosition(
-      position => {
-         console.log(`Lat: ${position.coords.latitude} Lng: ${position.coords.longitude}`)},
-      err => alert(`Error (${err.code}): ${err.message}`)
-    );
-  } else {
-    alert('Geolocation is not supported by your browser.');
+window.lat = 49.2812;
+window.lng = -123.12345;
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.watchPosition(updatePosition);
+    }
+  
+    return null;
+};
+
+function updatePosition(position) {
+  if (position) {
+    window.lat = position.coords.latitude;
+    window.lng = position.coords.longitude;
+    console.log("shoop da woop", window.lat, window.lng);
+    document.querySelector('.horseapples').innerHTML = `hmn ${window.lat}, ${window.lng}`;
+    // console.log(window.lng)
   }
+}
+
+getLocation();
+  
+const currentLat = () => {
+  return window.lat;
+};
+const currentLong = () => {
+  return window.lng;
+};
+// const getLocation = () => {
+  // if ('geolocation' in navigator) {
+  //   navigator.geolocation.watchPosition(
+  //     position => {
+  //        console.log(`Lat: ${position.coords.latitude} Lng: ${position.coords.longitude}`)},
+  //     err => alert(`Error (${err.code}): ${err.message}`)
+  //   );
+  // } else {
+  //   alert('Geolocation is not supported by your browser.');
+  // }
 // }
 
 class App extends Component {
@@ -47,6 +76,8 @@ class App extends Component {
       message: 'Click the button to load data!',
       zoom: 12,
       mapCenter: [49.2812, -123.1149],
+      lat: currentLat(),
+      long: currentLong()
     }
   }
 
@@ -63,62 +94,49 @@ class App extends Component {
     }) 
   }
 
-  // componentDidMount = () => {
-  //   fetch(`http://localhost:5000/trees`)
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       this.setState({trees: data.features})
-  //     })
-  // }
+  setLat = () => {
+   currentLat()
+  }
+
+  setLong = () => {
+    currentLong()
+  }
 
   render() {
     return (
-      // <div className="App">
-      //   <h1>{ this.state.message }</h1>
-      //   <button onClick={this.fetchData} >
-      //     Fetch Data
-      //   </button>        
-      // </div>
-      <Map
-        ref={m => { this.leafletMap = m }}
-        id="mapid"
-        center={this.state.mapCenter}
-        zoom={this.state.zoom}
-        maxZoom={maxZoom}
-      >
-      <TileLayer
-        attribution={attribution}
-        url={tileUrl}
-        id={'mapbox.light'}
-        accessToken={accessToken}
-      />
-      <MarkerClusterGroup>
-        <Marker
-          position={[49.2812, -123.1149]}
-          icon={customIcon}
-          style={{fontColor: '#edc4bc'}}
+        // <div className="App">
+        //   <h1>{ this.state.message }</h1>
+        //   <button onClick={this.fetchData} >
+        //     Fetch Data
+        //   </button>        
+        // </div>
+      <>
+        <div className='horseapples'>nope</div>
+        <Map
+          ref={m => { this.leafletMap = m }}
+          id="mapid"
+          center={this.state.mapCenter}
+          zoom={this.state.zoom}
+          maxZoom={maxZoom}
         >
-        </Marker>
-        <Marker
-          position={[49.2812, -123.1149]}
-          icon={customIcon}
-          style={{fontColor: '#edc4bc'}}
-        >
-        </Marker>
-        <Marker
-          position={[49.2812, -123.1149]}
-          icon={customIcon}
-          style={{fontColor: '#edc4bc'}}
-        >
-        </Marker>
-        <Marker
-          position={[49.2812, -123.1149]}
-          icon={customIcon}
-          style={{fontColor: '#edc4bc'}}
-        >
-        </Marker>
-      </MarkerClusterGroup>
-      </Map>
+        <TileLayer
+          attribution={attribution}
+          url={tileUrl}
+          id={'mapbox.light'}
+          accessToken={accessToken}
+        />
+        <MarkerClusterGroup>
+          <Marker
+            lat={this.setLat()}
+            long={this.setLong()}
+            position={[this.state.lat, this.state.long]}
+            icon={customIcon}
+            style={{fontColor: '#edc4bc'}}
+          >
+          </Marker>
+        </MarkerClusterGroup>
+        </Map>
+      </ >
     );
   }
 }
