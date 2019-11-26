@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/authorize', to: 'users#authorize'
   get '/callback', to: 'users#callback'
   get '/current-track', to: 'users#current_track'
+  get '/recently-played', to: 'users#recently_played'
 
   namespace :api do # /api/data
 
