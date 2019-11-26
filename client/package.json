@@ -11,7 +11,8 @@
     "react-dom": "^16.10.0",
     "react-leaflet": "^2.6.0",
     "react-leaflet-markercluster": "^2.0.0-rc3",
-    "react-scripts": "3.2.0"
+    "react-scripts": "3.2.0",
+    "redux": "^4.0.4"
   },
   "scripts": {
     "start": "react-scripts start",
