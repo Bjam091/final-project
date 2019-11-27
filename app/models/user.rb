@@ -1,9 +1,9 @@
-require 'HTTParty'
+# require 'HTTParty'
 class User < ApplicationRecord
 
   class << self
     def update_persist_user tokens, response
-      binding.pry
+      #binding.pry
 
       @display_name = response["display_name"]
       @access_token = tokens["access_token"]
@@ -13,22 +13,30 @@ class User < ApplicationRecord
       @user.update_attributes(access_token: @access_token, refresh_token: @refresh_token)
     end
 
-    def get_current_track
-      @user = self.find(1)
+    def get_current_track current_user
+      @user = current_user
       @access_token = @user.access_token
   
       @response = HTTParty.get('https://api.spotify.com/v1/me/player/currently-playing', headers: {"Authorization": "Bearer #{@access_token}"})
-  
-      binding.pry
+      @response
     end
 
-    def get_recently_played
-      @user = self.find(1)
+    def get_recently_played current_user
+      @user = current_user
       @access_token = @user.access_token
 
       @response = HTTParty.get('https://api.spotify.com/v1/me/player/recently-played?limit=10', headers: {"Authorization": "Bearer #{@access_token}"})
 
       binding.pry
     end
+
+    def from_token_request request
+      username = request.params["auth"] && request.params["auth"]["username"]
+      self.find_by spotify_username: username
+    end
+  end
+
+  def authenticate password
+    return self
   end
 end

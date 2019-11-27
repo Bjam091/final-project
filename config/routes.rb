@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
+  post '/user_token' => 'user_token#create'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get '/authorize', to: 'users#authorize'
   get '/callback', to: 'users#callback'
   get '/current-track', to: 'users#current_track'
   get '/recently-played', to: 'users#recently_played'
+  get '/users/current', to: 'users#current'
 
   namespace :api do # /api/data
 
