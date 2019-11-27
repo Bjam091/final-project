@@ -5,7 +5,7 @@ import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
 import MarkerClusterGroup from 'react-leaflet-markercluster'
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
-import { addLocationWatcher } from './helperJulia'
+import { addLocationWatcher } from './mapHelpers'
 
 export default function Mapper(props) {
   // Mapbox base map URL
@@ -25,11 +25,11 @@ export default function Mapper(props) {
   });
 
   const customIcon = new L.Icon({
-    iconUrl: require('./assets/marker.png'),
-    iconSize: [15, 25]
+    iconUrl: require('./assets/pulse.gif'),
+    iconSize: [25, 25]
   })
 
-  const [zoom, setZoom] = useState(12)
+  const [zoom, setZoom] = useState(14)
   const [mapCenter, setMapCentre] = useState([49.2812, -123.1149])
   const [location, setLocation] = useState([49.2812, -123.1249])
 
