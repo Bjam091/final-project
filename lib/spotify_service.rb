@@ -1,17 +1,17 @@
-require 'HTTParty'
+# require 'HTTParty'
 
 module SpotifyService
   @request_url = 'https://accounts.spotify.com/authorize'
-  @development_redirect = 'https://58c0964c.ngrok.io'
+  @development_redirect = 'https://5bcbef52.ngrok.io'
   @client_id = ENV['SPOTIFY_CLIENT_ID']
-  @client_secret = ENV['SPOTIFY_CLIENT_SECRET']
+  @client_secret = ENV['SPOTIFY_SECRET_KEY']
 
   #@authorize_endpoint = "#{@authorize_url}?client_id=#{@client_id}&response_type=code&redirect_uri=#{@development_redirect}&scope=user-read-currently-playing"
   # https://developer.spotify.com/documentation/general/guides/authorization-guide/
 
   class << self
     def authorize
-      "#{@request_url}?client_id=#{@client_id}&response_type=code&redirect_uri=#{@development_redirect}/callback&scope=user-read-currently-playing"
+      "#{@request_url}?client_id=#{@client_id}&response_type=code&redirect_uri=#{@development_redirect}/callback&scope=user-read-currently-playing%20user-read-recently-played"
     end
 
     def fetch_tokens code
@@ -30,7 +30,7 @@ module SpotifyService
 
       @response = HTTParty.post('https://accounts.spotify.com/api/token', options)
       #response contains the access token and refresh token (needs to be DB persisted)
-      binding.pry
+      #binding.pry
       fetch_user(@response)
     end
 
@@ -39,7 +39,7 @@ module SpotifyService
       @refresh_token = tokens["refresh_token"]
 
       @response = HTTParty.get('https://api.spotify.com/v1/me', headers: {"Authorization": "Bearer #{@access_token}"})
-      binding.pry
+      #binding.pry
 
       User.update_persist_user(tokens, @response)
     end
