@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './App.css';
-import LocationMap from "src/components/LocationMap";
-import ProfileCard from "src/components/ProfileCard";
-import RecentlyPlayedList from "src/components/RecentlyPlayedList";
-import RecentlyPlayedListItem from "src/components/RecentlyPlayedListItem";
-import SavedList from "src/components/SavedList";
-import SavedListItem from "src/components/SavedListItem";
-import TrackList from "src/components/TrackList";
-import TrackListItem from "src/components/TrackListItem";
-import Button from "src/components/Button";
+// import './App.css';
+// import ProfileCard from "./components/ProfileCard";
+import RecentlyPlayedList from "./components/RecentlyPlayedList";
+// import RecentlyPlayedListItem from "./components/RecentlyPlayedListItem";
+// import SavedList from "./components/SavedList";
+// import SavedListItem from "./components/SavedListItem";
+// import TrackList from "./components/TrackList";
+// import TrackListItem from "./components/TrackListItem";
+import Button from "./components/Button";
 
-import { getAppointmentsForDay } from "helpers/selectors";
+// import { getAppointmentsForDay } from "./helpers/selectors";
 
 class App extends Component {
-  // constructor(props) {
-  //   super(props)
-    state = {
-      message: 'Click the button to load data!',
+  constructor(props) {
+    super(props)
+    this.state = {
+      message: "Songs go here!",
       tracks: [
         { id: 1, artist: "Enya", title: "Orinoco Flow", albumcover: "https://i.imgur.com/LpaY82x.png" },
         { id: 2, artist: "Moby", title: "Porcelain", albumcover: "https://i.imgur.com/Nmx0Qxo.png" },
@@ -25,7 +24,7 @@ class App extends Component {
         { id: 4, artist: "Ludovico Einaudi", title: "Divenire", albumcover: "https://i.imgur.com/FK8V841.jpg" },
         { id: 5, artist: "Crosby Stills & Nash", title: "Cathedral", albumcover: "https://i.imgur.com/twYrpay.jpg" }
       ]
-    // }
+    }
   }
 
   fetchData = () => {
@@ -42,14 +41,14 @@ class App extends Component {
   }
 
   render() {
-    // return (
-    //   <div className="App">
-    //     <h1>{ this.state.message }</h1>
-    //     <button onClick={this.fetchData} >
-    //       Fetch Data
-    //     </button>        
-    //   </div>
-    // );
+    return (
+      <div className="App">
+        <h1>{ this.state.message }</h1>
+        <button onClick={this.fetchData} >
+          Fetch Data
+        </button>        
+      </div>
+    );
 
     
     return (
@@ -62,14 +61,14 @@ class App extends Component {
           />
           <hr className="sidebar__separator sidebar--centered" />
           <nav className="sidebar__menu">
-            <RecentlyPlayedList tracks={this.state.tracks} />
+            {/* <RecentlyPlayedList tracks={this.state.tracks} /> */}
           </nav>
       
         </section>
         <section className="schedule">
           <section className="schedule">
             {this.state.tracks} <h2>Hello!</h2>
-            <LocationMap />
+            <RecentlyPlayedList />
           </section>
         </section>
       </main>

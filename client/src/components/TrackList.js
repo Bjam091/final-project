@@ -1,10 +1,7 @@
-import DayListItem from "components/DayListItem";
+
 import React from "react";
 import classnames from "classnames";
-import "components/InterviewerListItem.scss";
-import "components/InterviewerList.scss";
-import InterviewerListItem from "components/InterviewerListItem";
-import Appointment from "components/Appointment";
+import TrackListItem from "./TrackListItem";
 import PropTypes from 'prop-types';
  
 TrackList.propTypes = {

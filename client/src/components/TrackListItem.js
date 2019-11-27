@@ -1,13 +1,13 @@
 import React from "react";
 import classNames from "classnames";
-import "components/TrackListItem.scss";
-import "components/TrackList.scss";
+// import "components/TrackListItem.scss";
+// import "components/TrackList.scss";
 
 export default function TrackListItem(props) {
 
   const itemClass = classNames({
-    "interviewers__item": true,
-    "interviewers__item--selected": props.selected
+    "tracklist__item": true,
+    "tracklist__item--selected": props.selected
   })
   return (
 
@@ -17,7 +17,7 @@ export default function TrackListItem(props) {
         src={props.album_img}
         alt={props.track_title}
       />
-      {props.selected && props.name}
+      {props.selected && props.title}
     </li>
   );
 };

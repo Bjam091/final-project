@@ -1,13 +1,10 @@
-import DayListItem from "components/DayListItem";
+
 import React from "react";
 import classnames from "classnames";
-import "components/InterviewerListItem.scss";
-import "components/InterviewerList.scss";
-import SavedListItem from "components/InterviewerListItem";
-import Appointment from "components/Appointment";
+import SavedListItem from "./SavedListItem";
 import PropTypes from 'prop-types';
  
-TrackList.propTypes = {
+SavedList.propTypes = {
   value: PropTypes.number,
   onChange: PropTypes.func.isRequired
 };
