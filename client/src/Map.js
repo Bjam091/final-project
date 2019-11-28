@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
-import { addLocationWatcher } from './mapHelpers'
+import { addLocationWatcher } from './helpers/mapHelpers'
 
 // Create Map
 const accessToken = 'pk.eyJ1IjoianVsaWFqNjIxIiwiYSI6ImNrM2VxdnlmbzAxM2MzaHBhOXQ2Z2RibTAifQ.dVzPBLFX3oJ1-DHsz4dCOA'
