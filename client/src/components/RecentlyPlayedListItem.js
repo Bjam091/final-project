@@ -5,19 +5,22 @@ import classNames from "classnames";
 
 export default function RecentlyPlayedListItem(props) {
 
-  const itemClass = classNames({
-    "saved__item": true,
-    "saved__item--selected": props.selected
-  })
-  return (
+  const recentSongs = "RecentlyPlayedListItem (Artist - Recent Song)"
 
-    <li className={itemClass} onClick={(event) => { props.setTrack(props.id); }}>
-      <img
-        className="tracks__item-image"
-        src={props.album_img}
-        alt={props.track_title}
-      />
-      {props.selected && props.name}
-    </li>
+  // const itemClass = classNames({
+  //   "recent__item": true,
+  //   "recent__item--selected": props.selected
+  // })
+  return (
+    <li> {recentSongs} </li>
+
+    // <li className={itemClass} onClick={(event) => { props.setTrack(props.id); }}>
+    //   <img
+    //     className="tracks__item-image"
+    //     src={props.album_img}
+    //     alt={props.track_title}
+    //   />
+    //   {props.selected && props.name}
+    // </li>
   );
 };

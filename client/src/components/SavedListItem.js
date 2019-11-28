@@ -5,19 +5,26 @@ import classNames from "classnames";
 
 export default function SavedListItem(props) {
 
-  const itemClass = classNames({
-    "saved__item": true,
-    "saved__item--selected": props.selected
-  })
-  return (
+  const songprops = "Saved List Item: Artist - Title"
 
-    <li className={itemClass} onClick={(event) => { props.setTrack(props.id); }}>
-      <img
-        className="tracks__item-image"
-        src={props.album_img}
-        alt={props.track_title}
-      />
-      {props.selected && props.name}
+  // const itemClass = classNames({
+  //   "saved__item": true,
+  //   "saved__item--selected": props.selected
+  // })
+  return (
+    
+  <li>
+      {songprops}
+
     </li>
+
+    // <li className={itemClass} onClick={(event) => { props.setTrack(props.id); }}>
+    //   <img
+    //     className="tracks__item-image"
+    //     src={props.album_img}
+    //     alt={props.track_title}
+    //   />
+    //   {props.selected && props.name}
+    // </li>
   );
 };
