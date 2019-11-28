@@ -1,4 +1,3 @@
-# require 'HTTParty'
 class User < ApplicationRecord
 
   class << self
@@ -16,8 +15,10 @@ class User < ApplicationRecord
     def get_current_track current_user
       @user = current_user
       @access_token = @user.access_token
-  
+
       @response = HTTParty.get('https://api.spotify.com/v1/me/player/currently-playing', headers: {"Authorization": "Bearer #{@access_token}"})
+      @track = Track.find_or_create_track(@response)
+      @user.update_attribute(:active_song, @track.try(:id))
       @response
     end
 
