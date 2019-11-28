@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
-import { addLocationWatcher } from './helpers/mapHelpers'
+import { addLocationWatcher } from '../../helpers/mapHelpers'
 
 // Create Map
 const accessToken = 'pk.eyJ1IjoianVsaWFqNjIxIiwiYSI6ImNrM2VxdnlmbzAxM2MzaHBhOXQ2Z2RibTAifQ.dVzPBLFX3oJ1-DHsz4dCOA'
@@ -9,10 +9,8 @@ const Map = ReactMapboxGl({
   accessToken: accessToken
 });
 
-export default function Mapper(props) {
-  // Map styles
-  const styleBright = 'mapbox://styles/juliaj621/ck3hpn3x80yk41cqdd83vszuz'
-  const styleDarkYellow = 'mapbox://styles/juliaj621/ck3hqdgkb06il1cozji9lryp3'
+export default function DarkNeonMap(props) {
+  // Map style
   const styleDarkNeon = 'mapbox://styles/juliaj621/ck3eu8hj10b8h1cpdte6laqul'
 
   // State to set zoom and location movement of user
@@ -33,30 +31,21 @@ export default function Mapper(props) {
 
   // Rendering of map, marker, and styles menu
   return (
-    <React.Fragment>
-      <div id='container'>
-        <div className='map'>
-          <Map
-            style={styleBright}
-            zoom={zoom}
-            center={location}
-            containerStyle={{
-              height: '500px',
-              width: '100%'
-            }}
-          >
-            <Layer
-              type="symbol"
-              id="marker"
-              layout={{ 'icon-image': 'marker-15' }}>
-              <Feature coordinates={location} />
-            </Layer>
-          </Map>
-        </div>
-        <div id='menu'>
-    
-        </div>
-      </div>
-    </React.Fragment>
+    <Map
+      style={styleDarkNeon}
+      zoom={zoom}
+      center={location}
+      containerStyle={{
+        height: '500px',
+        width: '100%'
+      }}
+    >
+      <Layer
+        type="symbol"
+        id="marker"
+        layout={{ 'icon-image': 'marker-15' }}>
+        <Feature coordinates={location} />
+      </Layer>
+    </Map>
   )
 };
