@@ -4,20 +4,23 @@ import 'leaflet/dist/leaflet.css'
 import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
 import { addLocationWatcher } from './mapHelpers'
 
+// Create Map
 const accessToken = 'pk.eyJ1IjoianVsaWFqNjIxIiwiYSI6ImNrM2VxdnlmbzAxM2MzaHBhOXQ2Z2RibTAifQ.dVzPBLFX3oJ1-DHsz4dCOA'
 const Map = ReactMapboxGl({
   accessToken: accessToken
 });
 
 export default function Mapper(props) {
-  // Mapbox base map URL
-  // Map settings
-  const style = 'mapbox://styles/juliaj621/ck3hpn3x80yk41cqdd83vszuz'
+  // Map styles
+  const styleBright = 'mapbox://styles/juliaj621/ck3hpn3x80yk41cqdd83vszuz'
+  const styleDarkYellow = 'mapbox://styles/juliaj621/ck3hqdgkb06il1cozji9lryp3'
+  const styleDarkNeon = 'mapbox://styles/juliaj621/ck3eu8hj10b8h1cpdte6laqul'
 
+  // State to set zoom and location movement of user
   const [zoom, setZoom] = useState([14])
   const [location, setLocation] = useState([-123.1249, 49.2812])
 
-  // setLocation(addLocationWatcher())
+  // Function to change location state 
   function processNewPosition(pos) {
     if (pos && pos.coords) {
       setLocation([pos.coords.longitude, pos.coords.latitude]);
@@ -26,24 +29,47 @@ export default function Mapper(props) {
     }
   }
 
+  // When location changes this function triggers the new position to process into state
   useEffect(() => { addLocationWatcher(processNewPosition) }, []);
 
+  // Rendering of map, marker, and styles menu
   return (
-      <Map
-        style={style}
-        zoom={zoom}
-        center={location}
-        containerStyle={{
-          height: '100vh',
-          width: '100vw'
-        }}
-      >
-        <Layer
-          type="symbol"
-          id="marker"
-          layout={{ 'icon-image': 'marker-15' }}>
-          <Feature coordinates={location} />
-        </Layer>
-      </Map>
+    <React.Fragment>
+      <div id='container'>
+        <div class='map'>
+          <Map
+            style={styleBright}
+            zoom={zoom}
+            center={location}
+            containerStyle={{
+              height: '500px',
+              width: '100%'
+            }}
+          >
+            <Layer
+              type="symbol"
+              id="marker"
+              layout={{ 'icon-image': 'marker-15' }}>
+              <Feature coordinates={location} />
+            </Layer>
+            <Layer>
+
+            </Layer>
+          </Map>
+        </div>
+        <div id='menu'>
+          <input id='streets-v11' type='radio' name='rtoggle' value='streets' checked='checked' />
+          <label for='streets'>streets</label>
+          <input id='light-v10' type='radio' name='rtoggle' value='light' />
+          <label for='light'>light</label>
+          <input id='dark-v10' type='radio' name='rtoggle' value='dark' />
+          <label for='dark'>dark</label>
+          <input id='outdoors-v11' type='radio' name='rtoggle' value='outdoors' />
+          <label for='outdoors'>outdoors</label>
+          <input id='satellite-v9' type='radio' name='rtoggle' value='satellite' />
+          <label for='satellite'>satellite</label>
+        </div>
+      </div>
+    </React.Fragment>
   )
 };
