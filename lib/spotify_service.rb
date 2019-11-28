@@ -1,4 +1,3 @@
-# require 'HTTParty'
 
 module SpotifyService
   @request_url = 'https://accounts.spotify.com/authorize'
