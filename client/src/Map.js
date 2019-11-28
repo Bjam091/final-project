@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import 'leaflet/dist/leaflet.css'
 import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
 import { addLocationWatcher } from './mapHelpers'
 
@@ -36,7 +35,7 @@ export default function Mapper(props) {
   return (
     <React.Fragment>
       <div id='container'>
-        <div class='map'>
+        <div className='map'>
           <Map
             style={styleBright}
             zoom={zoom}
@@ -52,22 +51,10 @@ export default function Mapper(props) {
               layout={{ 'icon-image': 'marker-15' }}>
               <Feature coordinates={location} />
             </Layer>
-            <Layer>
-
-            </Layer>
           </Map>
         </div>
         <div id='menu'>
-          <input id='streets-v11' type='radio' name='rtoggle' value='streets' checked='checked' />
-          <label for='streets'>streets</label>
-          <input id='light-v10' type='radio' name='rtoggle' value='light' />
-          <label for='light'>light</label>
-          <input id='dark-v10' type='radio' name='rtoggle' value='dark' />
-          <label for='dark'>dark</label>
-          <input id='outdoors-v11' type='radio' name='rtoggle' value='outdoors' />
-          <label for='outdoors'>outdoors</label>
-          <input id='satellite-v9' type='radio' name='rtoggle' value='satellite' />
-          <label for='satellite'>satellite</label>
+    
         </div>
       </div>
     </React.Fragment>
