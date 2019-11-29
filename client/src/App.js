@@ -30,6 +30,7 @@ import { Body, Section, Paragraph, Button, ButtonStyles, RecentPlaylistStyle, Pl
 //     </Button>
 //   </Section>
 // );
+import { connect } from 'react-redux'
 
 
 class App extends Component {
@@ -186,5 +187,4 @@ export default function Application(props) {
 */
 
 
-
-export default App;
+export default connect(state => state)(App);
