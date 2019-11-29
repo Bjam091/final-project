@@ -1,15 +1,21 @@
 body {
-  background: #777777;
+  background-image: linear-gradient(to bottom right, #0f4735, #29354b);
   display: flex;
   flex-direction: column;
   align-content: center;
   margin: auto;
   font-family: 'Noto Sans', sans-serif; 
+  color: deeppurple;
+}
+
+nav {
+  font-family: 'Beth Ellen', cursive;
 }
 
 .App {
   background: grey;
   text-align: center;
+  color: blue;
 }
 
 .App-logo {
@@ -59,3 +65,9 @@ body {
   font-family: 'Open Sans', sans-serif;
   z-index: 10;
   }
+
+
+
+  /*Dark mode: gradient: 
+  background-image: linear-gradient(to bottom right, #6d5775, #000000);
+  */
