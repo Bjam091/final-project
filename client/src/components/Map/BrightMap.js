@@ -16,10 +16,6 @@ const BrightMap = function (props) {
   const styleDarkYellow = 'mapbox://styles/juliaj621/ck3hqdgkb06il1cozji9lryp3'
   const styleDarkNeon = 'mapbox://styles/juliaj621/ck3eu8hj10b8h1cpdte6laqul'
 
-  // State to set zoom and location movement of user
-  const [zoom, setZoom] = useState([14])
-  // const [location, setLocation] = useState([-123.1249, 49.2812])
-
   // Function to change location state 
   function processNewPosition(pos) {
     if (pos && pos.coords) {
@@ -42,7 +38,7 @@ const BrightMap = function (props) {
   return (
     <Map
     style={styleBright}
-      zoom={zoom}
+      zoom={props.zoom}
       center={props.location}
       containerStyle={{
         height: '500px',
