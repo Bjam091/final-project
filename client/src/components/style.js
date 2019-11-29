@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 
-export const Section = styled.main`
+export const Section = styled.section`
   display: flex;
   flex-direction: column;
-  background: #fff;
+  background: darkgrey;
   border: 2px solid black;
 `;
 
@@ -17,25 +17,37 @@ export const Paragraph = styled.p`
 export const Map = styled.div`
 display: flex;
 flex-direction: column;
-colour: steelblue;
-width: 100vw;
-height: 80vh;
+color: #330000;
+width: 50vw;
+height: 70vh;
 margin: auto;
-border: 2px solid black;
+border-radius: 15px;
+border: 2px solid lavender;
+padding: 40px;
 `
 
+export const Text = styled.div`
+  font-family: Calibri;
+  font-size: 16;
+  color: grey;
+`;
 
 export const PlaylistContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background: #fff;
-  color: seagreen;
-  border: 2px solid black;
-  width: 50%;
+  background: smoke;
+  color: #3C3658;
+  border: 2px solid lavender;
+  width: 50vw;
   border-radius: 15px;
   margin: auto;
   margin-top: 15px;
   padding: 40px;
+
+  @media (max-width: 700px) {
+    background: darksmoke;
+    width: 95vw;
+  }
  
   ${props =>
     props.recent &&
@@ -63,14 +75,21 @@ export const PlaylistContainer = styled.div`
 export const PlaylistItem = styled.li`
   display: flex;
   flex-direction: row;
-  background: black;
-  color: seagreen;
+  justify-content: space-between;
+  background: none;
+  color: #3C3658;
+  font-size: 16pt;
   width: 40vw;
   border-radius: 10px;
   margin: auto;
   margin-top: 15px;
-  padding: 10px;
-  border: 2px solid black;
+  padding: 30px;
+  border: 2px solid lavender;
+
+  @media (max-width: 700px) {
+    background: palevioletred;
+    width: 90%;
+  }
  
   ${props =>
     props.recent &&
@@ -121,10 +140,12 @@ export const ButtonStyles = css`
  padding: 0.25em 1em;
 
  ${props =>
-   props.primary &&
+   props.spotify &&
    css`
-     background: palevioletred;
-     color: white;
+     background: black;
+     color: seagreen;
+     font-size: 16pt;
+     width: 220px;
    `
   };
   ${props =>

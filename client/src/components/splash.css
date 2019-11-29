@@ -1,0 +1,23 @@
+body {
+  margin: auto;
+  width: 100vw;
+}
+
+.wrapper {
+  display: grid;
+  width: 80vw;
+  grid-template-columns: 100px 100px 100px;
+  grid-gap: 10px;
+  background-color: #fff;
+  color: #444;
+  margin: auto;
+}
+
+.box {
+  background-color: #444;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
+  margin: auto;
+}
