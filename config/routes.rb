@@ -7,6 +7,12 @@ Rails.application.routes.draw do
   get '/current-track', to: 'users#current_track'
   get '/recently-played', to: 'users#recently_played'
   get '/users/current', to: 'users#current'
+  get '/nearby', to: 'users#nearby'
+  get '/nearby/tracks', to: 'users#nearby_tracks'
+  get '/tracks/liked_tracks', to: 'tracks#liked_tracks'
+  get '/tracks/liked_count/:id', to: 'tracks#liked_count'
+  post '/tracks/like/:id', to: 'tracks#like_track'
+  post '/tracks/unlike/:id', to: 'tracks#unlike_track'
 
   namespace :api do # /api/data
 
