@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
-import './components/splash.css';
 import styled from 'styled-components';
 import RecentlyPlayedList from "./components/RecentlyPlayedList";
 import RecentlyPlayedListItem from "./components/RecentlyPlayedListItem";
@@ -11,7 +10,7 @@ import TrackList from "./components/TrackList";
 import TrackListItem from "./components/TrackListItem";
 // import Button from "./components/Button";
 
-import { Body, Section, Paragraph, Button, ButtonStyles, RecentPlaylistStyle, PlaylistContainer, PlaylistItem, Map, Text } from './components/style.js';
+import { Body, Section, Paragraph, Button, ButtonStyles, RecentPlaylistStyle, PlaylistContainer, PlaylistItem, Map, Text, Gridwrap, Nav, Panel, Footer } from './components/style.js';
 
 
 const List = styled.ul`
@@ -24,6 +23,8 @@ const List = styled.ul`
   box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.16);
 `;
 
+
+
 const tracks = [
   { id: 1, artist: "Enya", title: "Orinoco Flow", albumcover: "https://i.imgur.com/LpaY82x.png" },
   { id: 2, artist: "Moby", title: "Porcelain", albumcover: "https://i.imgur.com/Nmx0Qxo.png" },
@@ -32,7 +33,9 @@ const tracks = [
   { id: 5, artist: "Crosby Stills & Nash", title: "Cathedral", albumcover: "https://i.imgur.com/twYrpay.jpg" }
 ];
 
-const map = "https://bikehub.ca/sites/default/files/arbutus-greenway-route.png"
+const map = "https://bikehub.ca/sites/default/files/arbutus-greenway-route.png" // Placeholder for map div
+const album = "https://live.staticflickr.com/4120/4924317182_2fb90fa7ff_m.jpg" // placeholder for album grid - 200x200px
+const album2 = "https://farm5.static.flickr.com/4095/4924317280_0f57c62030_b.jpg" //placeholder 2 - 200x200px
 
 class App extends Component {
   constructor(props) {
@@ -64,14 +67,32 @@ class App extends Component {
 
   render() {
     return (
+      <body> 
+      
+<Nav> Listen In </Nav>
+<main>
+<Gridwrap>
+  
+  
+  <Panel><img src={album}></img>  </Panel>
+  <Panel><img src={album}></img>  </Panel>
+  <Panel><img src={album}></img>  </Panel>
+  <Panel><img src={album}></img>  </Panel>
+  <Panel><img src={album}></img>  </Panel>
+  <Panel><img src={album}></img>  </Panel>
+  <Panel><img src={album}></img>  </Panel>
+  <Panel><img src={album}></img>  </Panel>
+  
+  
+  <Footer><Button home>Take me home!</Button></Footer>
+</Gridwrap>
 
-      <main className="layout">
 
 
-        <Map>
+        {/* <Map>
         <img src={map}></img></Map> 
      
-      
+       */}
 
 
           <PlaylistContainer>
@@ -94,6 +115,7 @@ class App extends Component {
       }
 
       </main>
+      </body>
     );
   }
 }

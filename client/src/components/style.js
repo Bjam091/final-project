@@ -142,7 +142,7 @@ export const ButtonStyles = css`
  ${props =>
    props.spotify &&
    css`
-     background: black;
+     background: charcoal;
      color: seagreen;
      font-size: 16pt;
      width: 220px;
@@ -158,3 +158,43 @@ export const ButtonStyles = css`
    };
 `
 
+//NAV
+
+export const Nav = styled.nav`
+width: 100vw;
+position: fixed;
+height: 80px;
+font-size: 20pt;
+background: lightgrey;
+color: purple;
+margin: auto;
+justify-content: center;
+`
+
+// GRID DISPLAY
+
+export const Gridwrap = styled.div`
+max-width: 60vw;
+display: grid;
+margin: auto;
+margin-top: 100px;
+grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+grid-auto-rows: minmax(200px, auto);
+`
+export const Panel = styled.div`
+
+margin-left: 20px;
+margin-right: 20px;
+margin-top: 20px;
+margin-bottom: 20px;
+border: 2px solid white;
+flex: 1 1 250px;
+`
+
+// FOOTER
+
+export const Footer = styled.footer`
+margin-left: 5px;
+margin-right: 5px;
+flex: 0 1 100%;
+grid-column: 1 / -1;`

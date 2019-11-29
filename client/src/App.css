@@ -1,11 +1,15 @@
 body {
-  background-image: linear-gradient(to bottom right, #56466b, #f3f3f3);
+  background-image: linear-gradient(to bottom right, #0f4735, #29354b);
   display: flex;
   flex-direction: column;
   align-content: center;
   margin: auto;
   font-family: 'Noto Sans', sans-serif; 
   color: deeppurple;
+}
+
+nav {
+  font-family: 'Beth Ellen', cursive;
 }
 
 .App {
