@@ -3,8 +3,8 @@ class CreateUsers < ActiveRecord::Migration[5.2]
     create_table :users do |t|
       t.string :spotify_uuid
       t.string :spotify_username
-      t.string :latitude
-      t.string :longitude
+      t.decimal :latitude, precision: 10, scale: 6
+      t.decimal :longitude, precision: 10, scale: 6
       t.integer :active_song
 
       t.timestamps

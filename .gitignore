@@ -68,5 +68,3 @@ yarn-debug.log*
 
 /public
 .DS_Store
-.ruby-gemset
-.ruby-version

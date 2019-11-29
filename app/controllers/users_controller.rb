@@ -23,7 +23,15 @@ class UsersController < ApplicationController
     render json: track
   end
 
+  def nearby
+    latitude = params[:latitude]
+    longitude = params[:longitude]
+    nearby = User.nearby_users(latitude, longitude)
+    render json: nearby, :include => :track
+  end
+
   def recently_played
-    User.get_recently_played
+    tracks = User.get_recently_played(current_user)
+    render json: tracks
   end
 end

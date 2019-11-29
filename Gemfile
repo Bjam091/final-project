@@ -38,6 +38,9 @@ gem 'pry'
 gem 'knock'
 gem 'jwt'
 
+#A complete geocoding solution for Ruby
+gem 'geocoder'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

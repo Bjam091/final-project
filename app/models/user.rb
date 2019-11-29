@@ -1,4 +1,9 @@
 class User < ApplicationRecord
+  reverse_geocoded_by :latitude, :longitude
+  belongs_to :track, optional: true
+  #has_and_belongs_to_many :tracks
+  has_many :user_tracks
+  has_many :tracks, through: :user_tracks
 
   class << self
     def update_persist_user tokens, response
@@ -17,9 +22,10 @@ class User < ApplicationRecord
       @access_token = @user.access_token
 
       @response = HTTParty.get('https://api.spotify.com/v1/me/player/currently-playing', headers: {"Authorization": "Bearer #{@access_token}"})
+      # binding.pry
       @track = Track.find_or_create_track(@response)
-      @user.update_attribute(:active_song, @track.try(:id))
-      @response
+      @user.update_attribute(:track_id, @track.try(:id))
+      @track
     end
 
     def get_recently_played current_user
@@ -27,8 +33,12 @@ class User < ApplicationRecord
       @access_token = @user.access_token
 
       @response = HTTParty.get('https://api.spotify.com/v1/me/player/recently-played?limit=10', headers: {"Authorization": "Bearer #{@access_token}"})
+      @response
+    end
 
-      binding.pry
+    def nearby_users latitude, longitude
+      @nearby = User.near([latitude, longitude], 1, units: :km)
+      @nearby
     end
 
     def from_token_request request
