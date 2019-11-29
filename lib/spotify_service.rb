@@ -1,7 +1,7 @@
 
 module SpotifyService
   @request_url = 'https://accounts.spotify.com/authorize'
-  @development_redirect = 'https://5bcbef52.ngrok.io'
+  @development_redirect = 'https://listen-in.herokuapp.com'
   @client_id = ENV['SPOTIFY_CLIENT_ID']
   @client_secret = ENV['SPOTIFY_SECRET_KEY']
 
