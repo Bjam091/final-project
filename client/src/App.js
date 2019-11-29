@@ -24,6 +24,20 @@ const List = styled.ul`
 `;
 
 
+// const Main = () => (
+//   <Section>
+//     <Paragraph>
+//       Look at my buttons, they are amazing buttons !
+//     </Paragraph>
+//     <Button type="primary">
+//       A Primary Button
+//     </Button>
+//     <Button type="secondary">
+//       And I am a secondary
+//     </Button>
+//   </Section>
+// );
+import { connect } from 'react-redux'
 
 const tracks = [
   { id: 1, artist: "Enya", title: "Orinoco Flow", albumcover: "https://i.imgur.com/LpaY82x.png" },
@@ -182,5 +196,4 @@ export default function Application(props) {
 */
 
 
-
-export default App;
+export default connect(state => state)(App);
