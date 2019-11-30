@@ -32,11 +32,11 @@ export const Text = styled.div`
   color: grey;
 `;
 
-export const PlaylistContainer = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  background: smoke;
-  color: #3C3658;
+
+  color: #dddddd;
   border: 2px solid lavender;
   width: 50vw;
   border-radius: 15px;
@@ -45,9 +45,17 @@ export const PlaylistContainer = styled.div`
   padding: 40px;
 
   @media (max-width: 700px) {
-    background: darksmoke;
-    width: 95vw;
+    max-width: 95vw;
   }
+
+};
+${props =>
+    props.playlist &&
+    css`
+    background: none;
+    color: green;
+  `
+  };
  
   ${props =>
     props.recent &&
@@ -55,21 +63,33 @@ export const PlaylistContainer = styled.div`
       background: white;
       color: black;
     `
-   };
+  };
    ${props =>
-     props.saved &&
-     css`
+    props.saved &&
+    css`
        background: darkgrey;
        color: green;
      `
-    };
+  };
+    
     ${props =>
-      props.nearby &&
-      css`
+    props.splash &&
+    css`
+        border: none;
+        margin: auto;
+
+      `
+  };
+     
+
+
+    ${props =>
+    props.nearby &&
+    css`
         background: palegreen;
         color: darkgreen;
       `
-     };
+  };
 `
 
 export const PlaylistItem = styled.li`
@@ -77,7 +97,7 @@ export const PlaylistItem = styled.li`
   flex-direction: row;
   justify-content: space-between;
   background: none;
-  color: #3C3658;
+  color: #dddddd;
   font-size: 16pt;
   width: 40vw;
   border-radius: 10px;
@@ -97,21 +117,21 @@ export const PlaylistItem = styled.li`
       background: white;
       color: black;
     `
-   };
+  };
    ${props =>
-     props.saved &&
-     css`
+    props.saved &&
+    css`
        background: #990000;
        color: white;
      `
-    };
+  };
     ${props =>
-      props.nearby &&
-      css`
+    props.nearby &&
+    css`
         background: palegreen;
         color: darkgreen;
       `
-     };
+  };
 `
 
 
@@ -129,9 +149,11 @@ export const ButtonStyles = css`
   color: white;
   border: 2px solid white;
  `
- 
- export const Button = styled.button`
+
+export const Button = styled.button`
  width: 250px;
+ height: 75px;
+ font-size: 14pt;
  background: transparent;
  border-radius: 3px;
  border: 2px solid;
@@ -140,8 +162,8 @@ export const ButtonStyles = css`
  padding: 0.25em 1em;
 
  ${props =>
-   props.spotify &&
-   css`
+    props.spotify &&
+    css`
      background: charcoal;
      color: seagreen;
      font-size: 16pt;
@@ -155,28 +177,47 @@ export const ButtonStyles = css`
       color: white;
       border: 2px solid teal;
     `
-   };
+  };
 `
 
 //NAV
 
 export const Nav = styled.nav`
 width: 100vw;
-position: fixed;
+padding: 50px;
 height: 80px;
+position: fixed;
+background: transparent;
 font-size: 20pt;
-background: lightgrey;
-color: purple;
+font-family: 'Beth Ellen', cursive;
+color: #dddddd;
 margin: auto;
-justify-content: center;
 `
+
+export const Header = styled.div`
+display: flex;
+margin: auto;
+align-self: auto;
+`
+
+export const Logo = styled.h1`
+font-family: 'Beth Ellen', cursive;
+color: #dddddd;
+align-self: center;
+`
+
+export const Heading = styled.h2`
+font-size: 40pt;
+font-family: sans-serif;
+color: #dddddd;`
 
 // GRID DISPLAY
 
 export const Gridwrap = styled.div`
-max-width: 60vw;
+width: 55vw;
 display: grid;
 margin: auto;
+align-self: center;
 margin-top: 100px;
 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 grid-auto-rows: minmax(200px, auto);
@@ -188,6 +229,7 @@ margin-right: 20px;
 margin-top: 20px;
 margin-bottom: 20px;
 border: 2px solid white;
+border-radius: 10px;
 flex: 1 1 250px;
 `
 
