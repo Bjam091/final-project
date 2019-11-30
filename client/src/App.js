@@ -10,7 +10,7 @@ import TrackList from "./components/TrackList";
 import TrackListItem from "./components/TrackListItem";
 // import Button from "./components/Button";
 
-import { Body, Section, Paragraph, Button, ButtonStyles, RecentPlaylistStyle, PlaylistContainer, PlaylistItem, Map, Text, Gridwrap, Nav, Panel, Footer } from './components/style.js';
+import { Section, Paragraph, Button, ButtonStyles, RecentPlaylistStyle, Container, PlaylistItem, Map, Text, Gridwrap, Nav, Panel, Footer, Header, Heading, Logo } from './components/style.js';
 
 
 const List = styled.ul`
@@ -26,11 +26,11 @@ const List = styled.ul`
 
 
 const tracks = [
-  { id: 1, artist: "Enya", title: "Orinoco Flow", albumcover: "https://i.imgur.com/LpaY82x.png" },
-  { id: 2, artist: "Moby", title: "Porcelain", albumcover: "https://i.imgur.com/Nmx0Qxo.png" },
-  { id: 3, artist: "Led Zeppelin", title: "Stairway to Heaven", albumcover: "https://i.imgur.com/T2WwVfS.png" },
-  { id: 4, artist: "Ludovico Einaudi", title: "Divenire", albumcover: "https://i.imgur.com/FK8V841.jpg" },
-  { id: 5, artist: "Crosby Stills & Nash", title: "Cathedral", albumcover: "https://i.imgur.com/twYrpay.jpg" }
+  { id: 1, artist: "Enya", title: "Orinoco Flow", albumcover: "https://torontoist.com/wp-content/uploads/2011/01/20101119RCH05-100x100.jpg" },
+  { id: 2, artist: "Moby", title: "Porcelain", albumcover: "https://torontoist.com/wp-content/uploads/2011/01/20101119RCH05-100x100.jpg" },
+  { id: 3, artist: "Led Zeppelin", title: "Stairway to Heaven", albumcover: "https://torontoist.com/wp-content/uploads/2011/01/20101119RCH05-100x100.jpg" },
+  { id: 4, artist: "Ludovico Einaudi", title: "Divenire", albumcover: "https://torontoist.com/wp-content/uploads/2011/01/20101119RCH05-100x100.jpg" },
+  { id: 5, artist: "Crosby Stills & Nash", title: "Cathedral", albumcover: "https://torontoist.com/wp-content/uploads/2011/01/20101119RCH05-100x100.jpg" }
 ];
 
 const map = "https://bikehub.ca/sites/default/files/arbutus-greenway-route.png" // Placeholder for map div
@@ -42,13 +42,7 @@ class App extends Component {
     super(props)
     this.state = {
       message: "Songs go here!",
-      tracks: [
-        { id: 1, artist: "Enya", title: "Orinoco Flow", albumcover: "https://i.imgur.com/LpaY82x.png" },
-        { id: 2, artist: "Moby", title: "Porcelain", albumcover: "https://i.imgur.com/Nmx0Qxo.png" },
-        { id: 3, artist: "Led Zeppelin", title: "Stairway to Heaven", albumcover: "https://i.imgur.com/T2WwVfS.png" },
-        { id: 4, artist: "Ludovico Einaudi", title: "Divenire", albumcover: "https://i.imgur.com/FK8V841.jpg" },
-        { id: 5, artist: "Crosby Stills & Nash", title: "Cathedral", albumcover: "https://i.imgur.com/twYrpay.jpg" }
-      ]
+      tracks: [ ]
     }
   }
 
@@ -69,7 +63,7 @@ class App extends Component {
     return (
       <body> 
       
-<Nav> Listen In </Nav>
+
 <main>
 <Gridwrap>
   
@@ -84,10 +78,12 @@ class App extends Component {
   <Panel><img src={album}></img>  </Panel>
   
   
-  <Footer><Button home>Take me home!</Button></Footer>
+
 </Gridwrap>
-
-
+<Container splash>
+<Logo>ListenIn</Logo>
+  <Heading> See what people around you are listening to. </Heading>
+</Container>
 
         {/* <Map>
         <img src={map}></img></Map> 
@@ -95,19 +91,26 @@ class App extends Component {
        */}
 
 
-          <PlaylistContainer>
-            <h1 align="center">Playing Near You</h1>
+          <Container playlist>
+            <h1 align="center">My Pocket</h1>
            
               {tracks.map(({ id, title, artist, albumcover }) => (
                 <PlaylistItem key={id}>
-                  <img src={albumcover}></img> 
-                  {artist} - {title}
-                  <Button spotify>Listen on Spotify!</Button>
+                  <div> <img src={albumcover} width="100px" height="100px"></img> </div>
+                  <div> 
+                    <div>
+                    {artist} - {title}
+                    </div>
+                    <div>Album Name</div>
+
+                      </div>
+                  <div>   <button><img src="https://www.kcrw.com/events/left-right-center-live-2018-archived/img/listen-on-spotify-white.png" width="200px"></img></button></div>
+               
 
                 </PlaylistItem>
               ))}
           
-          </PlaylistContainer>
+          </Container>
           );
       
 
