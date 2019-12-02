@@ -12,7 +12,7 @@
 }
 
 .track-text {
-  font-size: 10px;
+  font-size: 12px;
   margin: 5px;
 }
 
@@ -35,7 +35,7 @@
 }
 
 .user-preview {
-  width: 120px;
+  width: auto;
   height: 30px;
   background-color: transparent;
   border-radius: 5px;
@@ -43,7 +43,6 @@
   margin-top: 5px;
   font-size: 10px;
   display: flex;
-  justify-content: space-between;
   color: white;
   display: inline-flex;
   align-items: center; 
@@ -52,4 +51,15 @@
 .track-buttons {
   display: flex;
   justify-content: space-around;
+}
+
+.signal-icon{
+  padding-right: 10px;
+}
+
+.like-button {
+  background-color: transparent;
+  border-color: transparent;
+  width: auto;
+  height: auto;
 }
