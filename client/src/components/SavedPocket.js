@@ -72,18 +72,7 @@ class App extends Component {
 
 
         <main>
-          <Gridwrap>
-
-
-            <Panel><img src={album} height="300" width="300"></img>  </Panel>
-            <Panel><img src={album} height="300" width="300"></img>  </Panel>
-            <Panel><img src={album} height="300" width="300"></img>  </Panel>
-            <Panel><img src={album} height="300" width="300"></img>  </Panel>
-            <Panel><img src={album} height="300" width="300"></img>  </Panel>
-            <Panel><img src={album} height="300" width="300"></img>  </Panel>
-
-
-
+      <div>  
             <form id="form-id" method="post" action="https://listen-in.herokuapp.com/tracks/like/1">
               <button onclick="document.getElementById('form-id').submit();"><h3>Like Track#1</h3></button>
             </form>
@@ -91,19 +80,11 @@ class App extends Component {
             <form id="form-id" method="post" action="https://listen-in.herokuapp.com/tracks/unlike/1">
               <button onclick="document.getElementById('form-id').submit();"><h3>Unlike Track#1</h3></button>
             </form>
-
-
-
-
-          </Gridwrap>
-          <Container splash>
-            <Logo>ListenIn</Logo>
-            <Heading> See what people around you are listening to. </Heading>
-          </Container>
+            </div>
 
 
           <Container playlist>
-            <h1 align="center">My Pocket</h1>
+            <h1>My Pocket</h1>
 
            Liked Tracks: Needs a GET request to /tracks/liked_tracks
 
@@ -137,9 +118,103 @@ class App extends Component {
   }
 }
 
+//Get likes; 
+
+/*
+
+GET request to:
+listen-in.herokuapp.com/tracks/liked_count/[trackid]
+
+-Liking:
+ 
+onclick:
+POST request to /tracks/liked_count/[trackid]
+then a GET request to get liked_count
+
+
+-Unliking: 
+onclick:
+POST request to /tracks/unlike/[trackid]
+then a GET request to get liked_count
+
+
+*/
+
+// fetchData = () => {
+//   axios.get('listen-in.herokuapp.com/tracks/liked_count/{track_id}') // You can simply make your requests to "/api/whatever you want"
+//     .then((response) => {
+//       // handle success
+//       console.log(response.data) // The entire response from the Rails API
+
+//       console.log(response.data.message) // Just the message
+//       this.setState({
+//         message: response.data.message
+//       });
+//     })
+// }
 
 
 
+
+
+/* REFERENCE CODE FROM SCHEDULER - Application.js
+
+export default function Application(props) {
+  const {
+    state,
+    setDay,
+    bookInterview,
+    cancelInterview
+  } = useApplicationData();
+
+  const interviewers = getInterviewersForDay(state, state.day);
+  
+  const appointments = getAppointmentsForDay(state, state.day).map(
+    appointment => {
+      return (
+        <Appointment
+          key={appointment.id}
+          {...appointment}
+          time={appointment.time}
+          interview={getInterview(state, appointment.interview)}
+          interviewers={interviewers}
+          bookInterview={bookInterview}
+          cancelInterview={cancelInterview}
+        />
+      );
+    }
+  );
+
+ 
+  return (
+    <main className="layout">
+      <section className="sidebar">
+        <img
+          className="sidebar--centered"
+          src="images/logo.png"
+          alt="Interview Scheduler"
+        />
+        <hr className="sidebar__separator sidebar--centered" />
+        <nav className="sidebar__menu">
+          <DayList days={state.days} day={state.day} setDay={setDay} />
+        </nav>
+        <img
+          className="sidebar__lhl sidebar--centered"
+          src="images/lhl.png"
+          alt="Lighthouse Labs"
+        />
+      </section>
+      <section className="schedule">
+        <section className="schedule">
+          {appointments} 
+          <Appointment key="last" time="5pm" />
+        </section>
+      </section>
+    </main>
+  );
+}
+
+*/
 
 
 

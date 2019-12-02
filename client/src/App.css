@@ -1,11 +1,11 @@
 body {
-  background-image: linear-gradient(to bottom right, #0f4735, #29354b);
+  background-image: linear-gradient(to bottom right, #aa8ac8, #ffffff);
   display: flex;
   flex-direction: column;
   align-content: center;
   margin: auto;
   font-family: 'Noto Sans', sans-serif; 
-  color: deeppurple;
+  color: #32093f;
 }
 
 nav {
@@ -19,7 +19,7 @@ button {
 .App {
   background: none;
   margin: auto;
-  color: rgb(159, 159, 161);
+  color: #32093f;
 }
 
 .App-logo {
@@ -40,7 +40,7 @@ button {
 }
 
 .App-link {
-  color: #61dafb;
+  color: #2f183f;
 }
 
 @keyframes App-logo-spin {

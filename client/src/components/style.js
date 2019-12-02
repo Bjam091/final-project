@@ -36,8 +36,8 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  color: #dddddd;
-  border: 2px solid lavender;
+  color: #32093f;
+  border: 2px solid 2f183f;
   width: 50vw;
   border-radius: 15px;
   margin: auto;
@@ -107,7 +107,6 @@ export const PlaylistItem = styled.li`
   border: 2px solid lavender;
 
   @media (max-width: 700px) {
-    background: palevioletred;
     width: 90%;
   }
  
@@ -202,12 +201,13 @@ align-self: auto;
 
 export const Logo = styled.h1`
 font-family: 'Beth Ellen', cursive;
+font-size: 45pt;
 color: #dddddd;
 align-self: center;
 `
 
 export const Heading = styled.h2`
-font-size: 40pt;
+font-size: 37pt;
 font-family: sans-serif;
 color: #dddddd;`
 
@@ -221,14 +221,21 @@ align-self: center;
 margin-top: 100px;
 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 grid-auto-rows: minmax(200px, auto);
+
+
+@media (max-width: 700px) {
+  width: 90%;
+}
+
 `
+
+
 export const Panel = styled.div`
 
 margin-left: 20px;
 margin-right: 20px;
 margin-top: 20px;
 margin-bottom: 20px;
-border: 2px solid white;
 border-radius: 10px;
 flex: 1 1 250px;
 `
