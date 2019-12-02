@@ -4,6 +4,7 @@ import '../../App.css';
 import ReactMapboxGl, { Layer, Feature, Marker } from 'react-mapbox-gl';
 import { addLocationWatcher } from '../../helpers/mapHelpers'
 import { processNewPosition } from './redux';
+import TrackListItem from '../TrackListItem'
 
 // Create Map
 const accessToken = 'pk.eyJ1IjoianVsaWFqNjIxIiwiYSI6ImNrM2VxdnlmbzAxM2MzaHBhOXQ2Z2RibTAifQ.dVzPBLFX3oJ1-DHsz4dCOA'
@@ -23,13 +24,14 @@ export class LightMap extends Component {
   componentDidMount() {
     addLocationWatcher(this.props.processNewPosition)
   }
-  // useEffect(() => { addLocationWatcher(processNewPosition) }, []);
 
   render() {
     const { location } = this.props.loc;
     console.log(this.props)
     return (
+      <section className='container'>
       <Map
+        className='map'
         style={styleLight}
         zoom={this.props.loc.zoom}
         center={location}
@@ -45,6 +47,12 @@ export class LightMap extends Component {
           <Feature coordinates={location} />
         </Layer>
       </Map>
+      <TrackListItem className='current-song'></TrackListItem>
+      <div id='broadcast-dot'>
+        <img className='green-dot' src='https://i.ibb.co/ZT4PDZJ/glow-button-on.png' />
+        <div className='broadcasting'>Broadcasting Now</div>
+      </div>
+      </section>
     );
   }
 }
