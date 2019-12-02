@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './App.css';
+import './Pocket.css';
 import styled from 'styled-components';
 import likeTrack from './helpers/selectors.js';
 import RecentlyPlayedList from "./components/RecentlyPlayedList";
@@ -10,8 +10,6 @@ import SavedListItem from "./components/SavedListItem";
 import TrackList from "./components/TrackList";
 import TrackListItem from "./components/TrackListItem";
 // import Button from "./components/Button";
-
-import { Section, Paragraph, Button, ButtonStyles, RecentPlaylistStyle, Container, PlaylistItem, Map, Text, Gridwrap, Nav, Panel, Footer, Header, Heading, Logo } from './components/style.js';
 
 
 const List = styled.ul`
@@ -34,10 +32,6 @@ const savedTracks = [
   { id: 5, artist: "Crosby Stills & Nash", title: "Cathedral", albumcover: "https://torontoist.com/wp-content/uploads/2011/01/20101119RCH05-100x100.jpg" }
 ];
 
-const map = "https://bikehub.ca/sites/default/files/arbutus-greenway-route.png" // Placeholder for map div
-const album = "https://www.thisiscolossal.com/wp-content/uploads/2019/02/moon_crop-640x640.jpg" // placeholder for album grid - 640px
-const album2 = "https://farm5.static.flickr.com/4095/4924317280_0f57c62030_b.jpg" //placeholder 2 - 200x200px
-
 class App extends Component {
   constructor(props) {
     super(props)
@@ -46,25 +40,6 @@ class App extends Component {
       tracks: []
     }
   }
-
-  fetchData = () => {
-    axios.get('/api/data') // You can simply make your requests to "/api/whatever you want"
-      .then((response) => {
-        // handle success
-        console.log(response.data) // The entire response from the Rails API
-
-        console.log(response.data.message) // Just the message
-        this.setState({
-          message: response.data.message
-        });
-      })
-  }
-
-
-
-
-
-
 
   render() {
     return (
@@ -83,13 +58,15 @@ class App extends Component {
             </div>
 
 
-          <Container playlist>
+          <div id="playlist-container">
             <h1>My Pocket</h1>
 
            Liked Tracks: Needs a GET request to /tracks/liked_tracks
 
+          
 
             {savedTracks.map(({ id, title, artist, albumcover }) => (
+              <div class ="playlist-item">
               <PlaylistItem key={id}>
                 <div> <img src={album_img_url} width="100px" height="100px"></img> </div>
                 <div>
@@ -100,12 +77,14 @@ class App extends Component {
 
                 </div>
                 <div>   <button><img src="https://www.kcrw.com/events/left-right-center-live-2018-archived/img/listen-on-spotify-white.png" width="200px"></img></button></div>
+                <div><img src="./assets/heart-filled.jpg"></img></div>
 
 
               </PlaylistItem>
+              </div>
             ))}
 
-          </Container>
+          </div>
           );
 
 
@@ -153,68 +132,6 @@ then a GET request to get liked_count
 //     })
 // }
 
-
-
-
-
-/* REFERENCE CODE FROM SCHEDULER - Application.js
-
-export default function Application(props) {
-  const {
-    state,
-    setDay,
-    bookInterview,
-    cancelInterview
-  } = useApplicationData();
-
-  const interviewers = getInterviewersForDay(state, state.day);
-  
-  const appointments = getAppointmentsForDay(state, state.day).map(
-    appointment => {
-      return (
-        <Appointment
-          key={appointment.id}
-          {...appointment}
-          time={appointment.time}
-          interview={getInterview(state, appointment.interview)}
-          interviewers={interviewers}
-          bookInterview={bookInterview}
-          cancelInterview={cancelInterview}
-        />
-      );
-    }
-  );
-
- 
-  return (
-    <main className="layout">
-      <section className="sidebar">
-        <img
-          className="sidebar--centered"
-          src="images/logo.png"
-          alt="Interview Scheduler"
-        />
-        <hr className="sidebar__separator sidebar--centered" />
-        <nav className="sidebar__menu">
-          <DayList days={state.days} day={state.day} setDay={setDay} />
-        </nav>
-        <img
-          className="sidebar__lhl sidebar--centered"
-          src="images/lhl.png"
-          alt="Lighthouse Labs"
-        />
-      </section>
-      <section className="schedule">
-        <section className="schedule">
-          {appointments} 
-          <Appointment key="last" time="5pm" />
-        </section>
-      </section>
-    </main>
-  );
-}
-
-*/
 
 
 

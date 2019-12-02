@@ -1,0 +1,118 @@
+
+.playlist-container{
+  display: flex;
+  flex-direction: column;
+
+  color: #32093f;
+  border: 2px solid 2f183f;
+  width: 50vw;
+  border-radius: 15px;
+  margin: auto;
+  margin-top: 15px;
+  padding: 40px;
+
+  @media (max-width: 700px) {
+    max-width: 95vw;
+  }
+}
+
+.playlist-item {  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: none;
+  color: #dddddd;
+  font-size: 16pt;
+  width: 40vw;
+  border-radius: 10px;
+  margin: auto;
+  margin-top: 15px;
+  padding: 30px;
+  border: 2px solid lavender;
+
+  @media (max-width: 700px) {
+    width: 90%;
+  }
+}
+
+ 
+// BUTTONS
+
+.button-regular {
+  display: inline-block;
+  border-radius: 3px;
+  padding: 0.5rem;
+  margin: 0.5rem 1rem;
+  width: 11rem;
+  background: #624574;
+  color: #dddddd;
+  border: 2px solid #dddddd;
+}
+ 
+.button-transparent {
+  width: 250px;
+  height: 75px;
+  font-size: 14pt;
+  background: transparent;
+  border-radius: 3px;
+  border: 2px solid;
+  color: rgb(96, 70, 114);
+  margin: 0 1em;
+  padding: 0.25em 1em;
+}
+
+
+//NAV
+
+.navbar {
+  width: 100vw;
+  padding: 50px;
+  height: 80px;
+  position: fixed;
+  background: transparent;
+  font-size: 20pt;
+  font-family: 'Beth Ellen', cursive;
+  color: #4d3c55;
+  margin: auto;
+}
+
+
+.header {
+  display: flex;
+  margin: auto;
+  align-self: auto;
+}
+
+// GRID DISPLAY
+
+.gridwrap {
+  width: 55vw;
+  display: grid;
+  margin: auto;
+  align-self: center;
+  margin-top: 100px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-auto-rows: minmax(200px, auto);
+  
+@media (max-width: 700px) {
+  width: 90%;
+}
+}
+
+.panel {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  flex: 1 1 250px;
+}
+
+
+// FOOTER
+
+.footer {
+  margin-left: 5px;
+  margin-right: 5px;
+  flex: 0 1 100%;
+  grid-column: 1 / -1;
+}
