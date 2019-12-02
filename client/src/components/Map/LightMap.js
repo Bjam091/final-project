@@ -43,17 +43,17 @@ const LightMap = function (props) {
         width: '100%'
       }}
     >
-      {/* <Layer
+      <Layer
         type="symbol"
-        id="marker"
+        className="marker"
         layout={{ 'icon-image': 'marker-15' }}>
         <Feature coordinates={props.location} />
-      </Layer> */}
-      <Marker
+      </Layer>
+      {/* <Marker
         coordinates={props.location}
-        className='marker'
+        className='broadcasting'
       >
-      </Marker>
+      </Marker> */}
     </Map>
   )
 };
