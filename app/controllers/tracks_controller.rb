@@ -1,6 +1,11 @@
 class TracksController < ApplicationController
   include Knock::Authenticable
 
+  def index
+    tracks = Track.all
+    render json: tracks
+  end
+
   def liked_count
     track = Track.liked_tracks_count(params[:id])
     render json: track

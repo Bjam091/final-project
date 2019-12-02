@@ -5,7 +5,6 @@ module SpotifyService
   @client_id = ENV['SPOTIFY_CLIENT_ID']
   @client_secret = ENV['SPOTIFY_SECRET_KEY']
 
-  #@authorize_endpoint = "#{@authorize_url}?client_id=#{@client_id}&response_type=code&redirect_uri=#{@development_redirect}&scope=user-read-currently-playing"
   # https://developer.spotify.com/documentation/general/guides/authorization-guide/
 
   class << self
@@ -29,7 +28,23 @@ module SpotifyService
 
       @response = HTTParty.post('https://accounts.spotify.com/api/token', options)
       #response contains the access token and refresh token (needs to be DB persisted)
-      #binding.pry
+
+      fetch_user(@response)
+    end
+
+    def refresh_token code
+      #used for refreshing tokens on behalf of a user
+      options = {
+        body: {
+          grant_type: 'refresh_token',
+          refresh_token: code,
+          client_id: @client_id,
+          client_secret: @client_secret,
+        }
+      }
+
+      @response = HTTParty.post('https://accounts.spotify.com/api/token', options)
+
       fetch_user(@response)
     end
 
@@ -38,9 +53,9 @@ module SpotifyService
       @refresh_token = tokens["refresh_token"]
 
       @response = HTTParty.get('https://api.spotify.com/v1/me', headers: {"Authorization": "Bearer #{@access_token}"})
-      #binding.pry
 
       User.update_persist_user(tokens, @response)
+      @response
     end
   end
 end

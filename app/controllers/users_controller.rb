@@ -8,9 +8,9 @@ class UsersController < ApplicationController
 
   def callback
     if (!!request.query_string)
-      SpotifyService.fetch_tokens(request.query_string) #query string contains "code" 
+      @res = SpotifyService.fetch_tokens(request.query_string) #query string contains "code"
     end
-    render json: "Authorized", status: 200
+    redirect_to "http://localhost:3000/auth?user=#{@res["display_name"]}"
   end
 
   def current
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   end
 
   def recently_played
-    tracks = User.get_recently_played(current_user)
+    tracks = User.get_recently_played(params[:id])
     render json: tracks
   end
 end

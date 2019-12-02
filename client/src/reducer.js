@@ -1,4 +1,5 @@
 // import { combineReducers } from 'redux'
+// Needs to become "AppReducer" in reducers.js, create folder called "Main" which will be the new component folder. Then place this in "redux.js" in that component folder.
 
 import {
   UPDATE_LOCATION,
@@ -32,7 +33,7 @@ function appReducer(state = initialState, action) {
         ...state,
         message: action.message,
       }
-    case UPDATE_CURRENT_SONG: 
+    case UPDATE_CURRENT_SONG:
       return {
         ...state,
         current_track_example: action.current_track_example
