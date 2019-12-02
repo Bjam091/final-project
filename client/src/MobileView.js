@@ -16,9 +16,13 @@ import LightMap from './components/Map/LightMap'
 const MobileView = function (props) {
 
   return (
-    <section id='container'>
-    <LightMap></LightMap>
-    <TrackListItem></TrackListItem>
+    <section className='container'>
+      <LightMap className='map'></LightMap>
+      <TrackListItem className='current-song'></TrackListItem>
+      <div id='broadcast-dot'>
+        <img className='green-dot' src='https://i.ibb.co/ZT4PDZJ/glow-button-on.png' />
+        <div className='broadcasting'>Broadcasting Now</div>
+      </div>
     </section>
 
   )
