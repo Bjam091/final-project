@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const UPDATE_LOCATION = 'UPDATE_LOCATION';
 
 const INITIAL_STATE = {
@@ -31,6 +33,21 @@ export function processNewPosition(pos) {
       }
     } catch (e) {
       console.log('error getting current position', e);
+    }
+  }
+};
+
+export function addCoordsToUser(userId, latitude, longitude) {
+  return async () => {
+    try {
+        await axios.put(`https://listen-in.herokuapp.com/users/coords?user_id=${userId}`, {
+          "coords": {
+            "latitude": latitude,
+            "longitude": longitude
+          }
+        })
+    } catch (e) {
+      console.log('error getting logging user position to db', e);
     }
   }
 };

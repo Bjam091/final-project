@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import '../../App.css';
 import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
 import { addLocationWatcher } from '../../helpers/mapHelpers'
-import { processNewPosition } from './redux';
+import { processNewPosition, addCoordsToUser } from './redux';
 import TrackListItem from '../TrackList/TrackListItem'
 
 // Create Map
@@ -27,6 +27,12 @@ export class LightMap extends Component {
   // When location changes this function triggers the new position to process into state
   componentDidMount() {
     addLocationWatcher(this.props.processNewPosition)
+    this.props.addCoordsToUser(this.props.auth.user.id, this.props.loc.location[1], this.props.loc.location[0])
+    this.sendLocation = setInterval(() => this.props.addCoordsToUser(this.props.auth.user.id, this.props.loc.location[1], this.props.loc.location[0]), 180000)
+  }
+
+  componentWillUnmount() {
+    this.sendLocation= null;
   }
 
   startBroadcasting() {
@@ -34,6 +40,16 @@ export class LightMap extends Component {
       this.setState({ broadcast: 'Start Broadcasting' })
     } else {
       this.setState({ broadcast: 'Stop Broadcasting' })
+    }
+  }
+
+  getNearbyCount() {
+    if (this.props.tracks.tracks.length <= 1) {
+      return (    
+      <div className='nearby-users'>{0}</div>)
+    } else {
+      return (    
+        <div className='nearby-users'>{(this.props.tracks.tracks.length - 1)}</div>)
     }
   }
 
@@ -66,9 +82,7 @@ export class LightMap extends Component {
             <img className='green-dot' src='https://i.ibb.co/ZT4PDZJ/glow-button-on.png' />
             <div className='broadcasting'>Broadcasting Now</div>
           </div>
-          <div className='nearby-users'>
-            {(this.props.tracks.tracks.length - 1)}
-          </div>
+          {this.getNearbyCount()} 
           {/* <button className='start-broadcast'>Start Broadcasting</button> */}
           <button className='start-broadcast' onClick={this.startBroadcasting}>{this.state.broadcast}</button>
         </section>
@@ -89,4 +103,4 @@ const mapState = (state) => {
   };
 };
 
-export default connect(mapState, { processNewPosition })(LightMap);
+export default connect(mapState, { processNewPosition, addCoordsToUser })(LightMap);

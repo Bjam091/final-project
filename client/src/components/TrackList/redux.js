@@ -1,6 +1,6 @@
+import axios from 'axios';
 export const UPDATE_CURRENT_SONG = 'UPDATE_CURRENT_SONG';
 export const UPDATE_NEARBY_TRACKS = 'UPDATE_NEARBY_TRACKS'
-import axios from 'axios';
 
 
 const INITIAL_STATE = {
@@ -64,20 +64,3 @@ export function fetchAllNearby(lat, long) {
     }
   }
 }
-
-// export function processNewSong() {
-//   return async (dispatch) => {
-//     try {
-//       if () {
-//         dispatch(
-//           {
-//             type: 'UPDATE_CURRENT_SONG',
-//             location: [pos.coords.longitude, pos.coords.latitude]
-//           }
-//         );
-//       }
-//     } catch (e) {
-//       console.log('error getting current song', e);
-//     }
-//   }
-// };

@@ -15,21 +15,18 @@ export class TrackListItem extends Component {
     this.state = {};
   }
 
-  // Used to get nearby songs hard coded location
+  // Used to get nearby songs with user's location
   componentDidMount() {
-    this.props.fetchAllNearby('49.274596', '-123.141972')
+    this.props.fetchAllNearby(this.props.auth.user.latitude, this.props.auth.user.longitude)
     this.props.fetchCurrentSong(this.props.auth.jwt.jwt)
-    this.timer = setInterval(() => {this.props.fetchAllNearby('49.274596', '-123.141972')} , 2000);
-    this.current = setInterval(() => {this.props.fetchCurrentSong(this.props.auth.jwt.jwt)} , 2000);
+    this.timer = setInterval(() => {this.props.fetchAllNearby(this.props.auth.user.latitude, this.props.auth.user.longitude)} , 180000);
+    this.current = setInterval(() => {this.props.fetchCurrentSong(this.props.auth.jwt.jwt)} , 180000);
   }
 
   componentWillUnmount() {
     this.timer = null;
     this.current = null;
   }
-
-  // Used to get nearby songs NOT hard coded location
-  //   this.props.fetchAllNearby(this.props.auth.user.latitude, this.props.auth.user.longitude)
 
   render() {
     const nearbyList = this.props.tracks.tracks.filter(nearby => nearby.track_id !== null)
