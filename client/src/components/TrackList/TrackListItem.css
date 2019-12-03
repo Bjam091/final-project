@@ -1,0 +1,88 @@
+.trackitem {
+  background: linear-gradient(to bottom right, #b169e6, #8f27db);
+  height: 150px;
+  border-radius: 5px;
+  color: white;
+  opacity: 0.9;
+  margin: 10px;
+}
+
+.flex {
+  display: flex;
+}
+
+.track-text {
+  font-size: 12px;
+  margin: 5px;
+}
+
+.current-track-image {
+  /* height: 75px;
+  width: 75px; */
+  margin-top: 5px;
+  margin-left: 15px;
+  margin-right: 10px;
+}
+
+.spotify-badge{
+  width: auto;
+  height: 40px;
+}
+
+.liked-track {
+  margin-top: 25px;
+  margin-left: 5px;
+}
+
+.user-preview {
+  width: auto;
+  height: 30px;
+  background-color: transparent;
+  border-radius: 5px;
+  border-color: #8f27db;
+  margin-top: 5px;
+  font-size: 10px;
+  display: flex;
+  color: white;
+  display: inline-flex;
+  align-items: center; 
+}
+
+.track-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.signal-icon{
+  padding-right: 10px;
+}
+
+.like-button {
+  background-color: transparent;
+  border-color: transparent;
+  width: auto;
+  height: auto;
+}
+
+.nearby-broadcasting {
+  display: flex;
+  justify-content: space-between;
+}
+
+.start-broadcast, .stop-broadcast {
+  position: absolute;
+  top: 1%;
+  right: 0;
+  z-index: 5;
+  margin: 10px;
+  border-color: #73F58F;
+  border-radius: 5px;
+  margin-top: 5px;
+  color: #73F58F;
+  background-color: white;
+}
+
+.stop-broadcast {
+  color: red;
+  border-color: red;
+}

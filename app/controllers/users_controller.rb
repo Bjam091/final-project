@@ -34,4 +34,13 @@ class UsersController < ApplicationController
     tracks = User.get_recently_played(params[:id])
     render json: tracks
   end
+
+  def update_coords
+    latitude = params["coords"]["latitude"]
+    longitude = params["coords"]["longitude"]
+    user_id = params[:user_id]
+    user = User.find(user_id)
+    user.update_attributes(latitude: latitude, longitude: longitude)
+    render json: user
+  end
 end
