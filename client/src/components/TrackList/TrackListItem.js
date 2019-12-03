@@ -17,9 +17,12 @@ export class TrackListItem extends Component {
 
   // Used to get nearby songs hard coded location
   componentDidMount() {
-    console.log(this.props.auth.jwt.jwt)
-    console.log(this.props)
     this.props.fetchAllNearby('49.274596', '-123.141972')
+    this.timer = setInterval(() => {this.props.fetchAllNearby('49.274596', '-123.141972')} , 2000);
+  }
+
+  componentWillUnmount() {
+    this.timer = null;
   }
 
   // Used to get nearby songs NOT hard coded location
@@ -43,7 +46,6 @@ export class TrackListItem extends Component {
   // }
 
   render() {
-    console.log(this.props.tracks.tracks)
     const nearbyList = this.props.tracks.tracks.filter(nearby => nearby.track_id !== null)
     const settings = {
       dots: true,
