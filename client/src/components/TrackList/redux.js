@@ -1,7 +1,8 @@
+import axios from 'axios';
+import api from '../../utils/api';
+
 export const UPDATE_CURRENT_SONG = 'UPDATE_CURRENT_SONG';
 export const UPDATE_NEARBY_TRACKS = 'UPDATE_NEARBY_TRACKS'
-import axios from 'axios';
-
 
 const INITIAL_STATE = {
   tracks: []
@@ -27,7 +28,7 @@ export default (state = INITIAL_STATE, action = {}) => {
 export function fetchCurrentSong(jwt) {
   return async (dispatch) => {
     try {
-      axios.get('https://listen-in.herokuapp.com/current-track', {
+      axios.get(`${api.url}/current-track`, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${jwt}`
@@ -51,7 +52,7 @@ export function fetchCurrentSong(jwt) {
 export function fetchAllNearby(lat, long) {
   return async (dispatch) => {
     try {
-      axios.get(`https://listen-in.herokuapp.com/nearby?latitude=${lat}&longitude=${long}`)
+      axios.get(`${api.url}/nearby?latitude=${lat}&longitude=${long}`)
       .then((response) => {
         // console.log(response.data)
         dispatch(
