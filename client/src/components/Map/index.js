@@ -28,6 +28,7 @@ export class LightMap extends Component {
   render() {
     const { location } = this.props.loc;
     return (
+      <React.Fragment>
       <section className='container'>
         <Map
           className='map'
@@ -54,7 +55,14 @@ export class LightMap extends Component {
         <div className='nearby-users'>
           {(this.props.tracks.tracks.length - 1)}
         </div>
+        {/* <button className='start-broadcast'>Start Broadcasting</button> */}
+        <button className='stop-broadcast'>Stop Broadcasting</button>
       </section>
+        <div className='navbar'>
+          <button className='navbuttons'> <img src='https://i.ibb.co/M5Fx5SJ/home-inactive.png'/></button>
+          <button className='navbuttons'><img src='https://i.ibb.co/XtYQ1mV/user-inactive.png'/></button>
+        </div>
+        </React.Fragment>
     );
   }
 }

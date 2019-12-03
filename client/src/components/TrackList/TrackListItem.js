@@ -21,7 +21,7 @@ export class TrackListItem extends Component {
     console.log(this.props)
     this.props.fetchAllNearby('49.274596', '-123.141972')
   }
-  
+
   // Used to get nearby songs NOT hard coded location
   // componentDidMount() {
   //   console.log(this.props.auth.jwt.jwt)
@@ -57,7 +57,10 @@ export class TrackListItem extends Component {
     };
     return (
       <React.Fragment>
-        <div style={{ color: '#8f27db' }}>Playing Nearby</div>
+        <div className='nearby-broadcasting'>
+          <div style={{ color: '#8f27db' }}>Playing Nearby</div>
+          {/* <button className='start-broadcast'>Start Broadcasting</button> */}
+        </div>
         <Slider {...settings}>
           {this.props.tracks.tracks.map((track) =>
             <div key={track.id}>
