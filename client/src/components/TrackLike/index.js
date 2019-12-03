@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import api from '../../utils/api';
-// import { likeTrack, getLikes } from './redux';
 
 export class TrackLike extends Component {
   constructor(props) {
