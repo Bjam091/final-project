@@ -37,7 +37,6 @@ export class Like extends PureComponent {
               <div className='track-text'>
                 <div><strong>{track.title}</strong></div>
                 <div>{track.artist}</div>
-                <div>{track.album_title}</div>
                 <div class="likes"><button type="button" className='like-button' >
                   {/* onClick={fetchCurrentSong}> */}
                   {/* <form id="form-id" method="post" action="https://listen-in.herokuapp.com/tracks/like/${track.id}"> */}
