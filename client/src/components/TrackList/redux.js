@@ -34,7 +34,6 @@ export function fetchCurrentSong(jwt) {
         }
       })
       .then((response) => {
-        console.log(response.data) // The entire response from the Rails API
         dispatch(
           {
             type: 'UPDATE_CURRENT_SONG',
@@ -43,7 +42,7 @@ export function fetchCurrentSong(jwt) {
         )
       })
    } catch(e) {
-      console.log('error getting current user with JWT', e);
+      console.log('error getting current song with JWT', e);
     }
   }
 }
@@ -53,7 +52,6 @@ export function fetchAllNearby(lat, long) {
     try {
       axios.get(`https://listen-in.herokuapp.com/nearby?latitude=${lat}&longitude=${long}`)
       .then((response) => {
-        // console.log(response.data)
         dispatch(
           {
             type: 'UPDATE_NEARBY_TRACKS',

@@ -18,32 +18,18 @@ export class TrackListItem extends Component {
   // Used to get nearby songs hard coded location
   componentDidMount() {
     this.props.fetchAllNearby('49.274596', '-123.141972')
+    this.props.fetchCurrentSong(this.props.auth.jwt.jwt)
     this.timer = setInterval(() => {this.props.fetchAllNearby('49.274596', '-123.141972')} , 2000);
+    this.current = setInterval(() => {this.props.fetchCurrentSong(this.props.auth.jwt.jwt)} , 2000);
   }
 
   componentWillUnmount() {
     this.timer = null;
+    this.current = null;
   }
 
   // Used to get nearby songs NOT hard coded location
-  // componentDidMount() {
-  //   console.log(this.props.auth.jwt.jwt)
-  //   console.log(this.props)
   //   this.props.fetchAllNearby(this.props.auth.user.latitude, this.props.auth.user.longitude)
-  // }
-
-  // componentDidMount() {
-  //   console.log(this.props.auth.jwt.jwt)
-  //   console.log(this.props)
-  //   this.props.fetchCurrentSong(this.props.auth.jwt.jwt)
-  // }
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   if ((prevProps.tracks.tracks !== this.props.tracks.tracks) && (this.props.tracks.tracks !== [])) {
-  //     // console.log(this.props.tracks.tracks);
-  //     this.props.fetchAllNearby('49.274596', '-123.141972')
-  //   }
-  // }
 
   render() {
     const nearbyList = this.props.tracks.tracks.filter(nearby => nearby.track_id !== null)
