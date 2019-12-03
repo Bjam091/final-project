@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, setState } from 'react';
 import { connect } from 'react-redux';
 import '../../App.css';
 import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
@@ -17,7 +17,11 @@ const styleLight = 'mapbox://styles/juliaj621/ck3knnj2n0wy41cpewlosya06'
 export class LightMap extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      broadcast: "Stop Broadcasting"
+    };
+    this.startBroadcasting = this.startBroadcasting.bind(this)
+    
   }
 
   // When location changes this function triggers the new position to process into state
@@ -25,6 +29,14 @@ export class LightMap extends Component {
     addLocationWatcher(this.props.processNewPosition)
   }
 
+  startBroadcasting () {
+    if (this.state.broadcast === 'Stop Broadcasting') {
+    this.setState({broadcast: 'Start Broadcasting'})
+    } else {
+      this.setState({broadcast: 'Stop Broadcasting'})
+    }
+  }
+  
   render() {
     const { location } = this.props.loc;
     return (
@@ -56,7 +68,7 @@ export class LightMap extends Component {
           {(this.props.tracks.tracks.length - 1)}
         </div>
         {/* <button className='start-broadcast'>Start Broadcasting</button> */}
-        <button className='stop-broadcast'>Stop Broadcasting</button>
+      <button className='start-broadcast' onClick={this.startBroadcasting}>{this.state.broadcast}</button>
       </section>
         <div className='navbar'>
           <button className='navbuttons'> <img src='https://i.ibb.co/M5Fx5SJ/home-inactive.png'/></button>
