@@ -1,10 +1,10 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../../App.css';
-import ReactMapboxGl, { Layer, Feature, Marker } from 'react-mapbox-gl';
+import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
 import { addLocationWatcher } from '../../helpers/mapHelpers'
 import { processNewPosition } from './redux';
-import TrackListItem from '../TrackListItem'
+import TrackListItem from '../TrackList/TrackListItem'
 
 // Create Map
 const accessToken = 'pk.eyJ1IjoianVsaWFqNjIxIiwiYSI6ImNrM2VxdnlmbzAxM2MzaHBhOXQ2Z2RibTAifQ.dVzPBLFX3oJ1-DHsz4dCOA'
@@ -27,7 +27,6 @@ export class LightMap extends Component {
 
   render() {
     const { location } = this.props.loc;
-    console.log(this.props)
     return (
       <section className='container'>
       <Map
