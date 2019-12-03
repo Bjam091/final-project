@@ -18,7 +18,6 @@ export class TrackLike extends Component {
   }
 
   async getLikes(track_id) {
-    console.log('track id in liked', track_id)
     try {
       const data = await axios.get(`${api.url}/tracks/liked_count/${track_id}`);
       console.log('data in likes', data);
@@ -29,25 +28,43 @@ export class TrackLike extends Component {
   };
 
   async likeTrack(track_id) {
-    console.log('auth token', this.props.auth.jwt.jwt);
     try {
       const data = await axios.post(`${api.url}/tracks/like/${track_id}?user_id=${this.props.auth.user.id}`);
-      if (data.length > 0) {
-        const likes = await axios.get(`${api.url}/tracks/liked_count/${track_id}`);
-        this.setState({ count: likes.data });
-      }
+      const likes = await axios.get(`${api.url}/tracks/liked_count/${track_id}`);
+      this.setState({ count: likes.data });
+
     } catch (e) {
       console.log('error liking track', e);
     }
   };
 
+  async unlikeTrack(track_id) {
+    try {
+      const data = await axios.post(`${api.url}/tracks/unlike/${track_id}?user_id=${this.props.auth.user.id}`);
+      const likes = await axios.get(`${api.url}/tracks/liked_count/${track_id}`);
+      this.setState({ count: likes.data });
+
+    } catch (e) {
+      console.log('error unliking track', e);
+    }
+  };
+
   render() {
     const { track_id } = this.props;
+    if (this.state.count > 0) {
+      return (
+        <div className='liked-track'>
+          <button type="button" className='like-button' onClick={() => this.unlikeTrack(track_id)}>
+            <img src="https://i.ibb.co/28TYZtK/heart-filled.png" alt="heart-fill"/>
+          </button>
+        {this.state.count} users like this
+        </div>
+      )
+    }
     return (
       <div>
         <div className='liked-track'>
           <button type="button" className='like-button' onClick={() => this.likeTrack(track_id)}>
-            {/* <img src="https://i.ibb.co/28TYZtK/heart-filled.png" alt="heart-fill"/> */}
             <img src="https://i.ibb.co/Ny59PtM/heart-outline.png" alt="heart-outline" />
           </button>
         {this.state.count} users like this
@@ -61,7 +78,6 @@ const mapState = (state) => {
   //find by props track id
   return {
     auth: state.auth,
-    //likes: state.likes,
   };
 };
 

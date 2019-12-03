@@ -10,7 +10,6 @@ export default function createReducer(injectedReducers) {
     auth: AuthReducer,
     loc: LightMapReducer,
     tracks: TrackListReducer,
-    //likes: TrackLikesReducer,
     ...injectedReducers,
   });
 }
