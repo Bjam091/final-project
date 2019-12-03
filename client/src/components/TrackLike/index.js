@@ -31,7 +31,7 @@ export class TrackLike extends Component {
   async likeTrack(track_id) {
     console.log('auth token', this.props.auth.jwt.jwt);
     try {
-      const data = await axios.post(`${api.url}/tracks/like/${track_id}`, { Headers: { 'Authorization': "Bearer " + this.props.auth.jwt.jwt}});
+      const data = await axios.post(`${api.url}/tracks/like/${track_id}?user_id=${this.props.auth.user.id}`);
       if (data.length > 0) {
         const likes = await axios.get(`${api.url}/tracks/liked_count/${track_id}`);
         this.setState({ count: likes.data });

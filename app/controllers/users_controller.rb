@@ -38,7 +38,9 @@ class UsersController < ApplicationController
   def update_coords
     latitude = params["coords"]["latitude"]
     longitude = params["coords"]["longitude"]
-    current_user.update_attributes(latitude: latitude, longitude: longitude)
-    render json: current_user
+    user_id = params[:user_id]
+    user = User.find(user_id)
+    user.update_attributes(latitude: latitude, longitude: longitude)
+    render json: user
   end
 end

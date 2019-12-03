@@ -12,17 +12,23 @@ class TracksController < ApplicationController
   end
 
   def like_track
-    track = Track.like_track(current_user, params[:id])
+    user_id = params[:user_id]
+    user = User.find(user_id)
+    track = Track.like_track(user, params[:id])
     render json: track
   end
 
   def unlike_track
-    track = Track.unlike_track(current_user, params[:id])
+    user_id = params[:user_id]
+    user = User.find(user_id)
+    track = Track.unlike_track(user, params[:id])
     render json: track
   end
 
   def liked_tracks
-    tracks = current_user.tracks
+    user_id = params[:user_id]
+    user = User.find(user_id)
+    tracks = user.tracks
     render json: tracks
   end
 end
