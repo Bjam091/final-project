@@ -18,7 +18,7 @@ export class Recent extends PureComponent {
   }
 
   fetchRecentTracks() {
-    axios.get(`${api.url}/users/1/recently-played`, {headers: {'Content-Type': 'application/json', 'Authorization': "Bearer " + `${this.props.auth.jwt.jwt}`}})
+    axios.get(`${api.url}/tracks/liked_tracks`, {headers: {'Content-Type': 'application/json', 'Authorization': "Bearer " + `${this.props.auth.jwt.jwt}`}})
     .then((response) => {
       this.setState({ tracks: response.data });
     });
@@ -35,14 +35,9 @@ export class Recent extends PureComponent {
               <div className='track-text'>
                 <div>{track.title}</div>
                 <div>{track.artist}</div>
-                <div className='liked-track'><button type="button" className='like-button' >
-                  {/* onClick={fetchCurrentSong}> */}
-                  {/* <img src="https://i.ibb.co/28TYZtK/heart-filled.png" alt="heart-fill"/> */}
-                  <img src="https://i.ibb.co/Ny59PtM/heart-outline.png" alt="heart-outline" />
-                </button># users like this</div>
               </div>
             </div>
-            <hr></hr>
+
             <div className='track-buttons'>
               <a href={track.spotify_url}> <img className="spotify-badge" src="https://taylorbennett.co/wp-content/uploads/2018/02/spotify-badge-button.png" /></a>
             </div>
@@ -57,6 +52,7 @@ export class Recent extends PureComponent {
     return (
       <div>
         <div className="recently-played">
+        <h4>Recently Played Songs</h4>
           {this.renderRecentTracks()}
         </div>
       </div>
