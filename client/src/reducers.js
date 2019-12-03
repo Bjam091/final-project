@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
 import AuthReducer from './components/Auth/redux';
 import LightMapReducer from './components/Map/redux';
-import TrackListReducer from './components/TrackList/redux'
+import TrackListReducer from './components/TrackList/redux';
+//import TrackLikesReducer from './components/TrackLike/redux';
 
 
 export default function createReducer(injectedReducers) {

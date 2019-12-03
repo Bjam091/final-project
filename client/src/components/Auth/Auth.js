@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import queryString from 'query-string'
 import { Redirect } from 'react-router-dom';
 import { initializeJwt, initializeUser } from './redux';
+import './auth.scss';
 
 export class Auth extends Component {
   constructor(props) {
@@ -33,7 +34,9 @@ export class Auth extends Component {
       )
     }
     return (
-      <div>User Authorized</div>
+      <div className="spinner-wrapper">
+        <img className="spinner" src="/assets/spinner.gif" alt="" />
+      </div>
     );
   }
 }

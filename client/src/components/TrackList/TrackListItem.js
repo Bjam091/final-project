@@ -1,11 +1,10 @@
-import React, { Component } from "react";
-import className from "classnames";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 // import "components/TrackListItem.scss";
 // import "components/TrackList.scss";
-import Slider from "react-slick";
+import Slider from 'react-slick';
+import TrackLike from '../TrackLike';
 import './TrackListItem.css';
-import { connect } from 'react-redux'
-import axios from 'axios';
 import { fetchCurrentSong, fetchAllNearby } from './redux';
 
 export class TrackListItem extends Component {
@@ -26,6 +25,12 @@ export class TrackListItem extends Component {
   componentWillUnmount() {
     this.timer = null;
     this.current = null;
+  }
+
+  renderLikes(track_id) {
+    return (
+      <TrackLike track_id={track_id} />
+    )
   }
 
   render() {
@@ -56,16 +61,13 @@ export class TrackListItem extends Component {
                   <div className='track-text'>
                     <div>{track.track.title}</div>
                     <div>{track.track.artist}</div>
-                    <div className='liked-track'><button type="button" className='like-button' >
-                      {/* <img src="https://i.ibb.co/28TYZtK/heart-filled.png" alt="heart-fill"/> */}
-                      <img src="https://i.ibb.co/Ny59PtM/heart-outline.png" alt="heart-outline" />
-                    </button># users like this</div>
+                    {this.renderLikes(track.track.id)}
                   </div>
                 </div>
                 <hr></hr>
                 <div className='track-buttons'>
-                  <button className='user-preview'><img className='signal-icon' src="https://i.ibb.co/CJStwTB/signal.png" />{track.spotify_username}</button>
-                  <a href={track.track.spotify_url}> <img className="spotify-badge" src="https://taylorbennett.co/wp-content/uploads/2018/02/spotify-badge-button.png" /></a>
+                  <button className='user-preview'><img className='signal-icon' src="https://i.ibb.co/CJStwTB/signal.png" alt="" />{track.spotify_username}</button>
+                  <a href={track.track.spotify_url}> <img className="spotify-badge" src="https://taylorbennett.co/wp-content/uploads/2018/02/spotify-badge-button.png" alt=""/></a>
                 </div>
               </div>
             </div>
