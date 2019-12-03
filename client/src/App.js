@@ -3,7 +3,7 @@ import axios from 'axios';
 import Auth from './components/Auth/Auth';
 import Main from './components/Main/Main';
 import Map from './components/Map';
-import Like from './components/Like/Like';
+import Like from './components/Like';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 //To be used for routes only (entry file)

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import axios from 'axios';
 import api from '../../utils/api';
-import './Pocket.scss';
+import './recent.scss';
 import { connect } from 'react-redux';
 
 // const numLikes = api/users/1/liked_tracks.count;
@@ -20,7 +20,7 @@ export class Like extends PureComponent {
   }
 
   fetchLikedTracks() {
-    axios.get(`${api.url}/users/1/liked_tracks`, {headers: {'Content-Type': 'application/json', 'Authorization': "Bearer " + `${this.props.auth.jwt.jwt}`}})
+    axios.get(`${api.url}/tracks`, {headers: {'Content-Type': 'application/json', 'Authorization': "Bearer " + `${this.props.auth.jwt.jwt}`}})
     .then((response) => {
       this.setState({ tracks: response.data });
     });
@@ -39,11 +39,11 @@ export class Like extends PureComponent {
                 <div>{track.artist}</div>
                 <div className='liked-track'><button type="button" className='like-button' >
                   {/* onClick={fetchCurrentSong}> */}
-                  <form id="form-id" method="post" action="https://listen-in.herokuapp.com/tracks/unlike/1">
+                  <form id="form-id" method="post" action="https://listen-in.herokuapp.com/tracks/like/1">
               <img src="https://i.ibb.co/28TYZtK/heart-filled.png" alt="heart-fill" onclick="document.getElementById('form-id').submit();"/>
             </form>
                   {/* <img src="https://i.ibb.co/Ny59PtM/heart-outline.png" alt="heart-outline" /> */}
-                </button>{numLikes} users like this</div>
+                </button># users like this</div>
               </div>
             </div>
             <hr></hr>
