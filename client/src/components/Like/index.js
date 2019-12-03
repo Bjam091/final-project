@@ -35,20 +35,22 @@ export class Like extends PureComponent {
             <div className='flex'>
               <iframe className='current-track-image' src={`https://open.spotify.com/embed/track/${track.spotify_uuid}`} width="80" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
               <div className='track-text'>
-                <div>{track.title}</div>
+                <div><strong>{track.title}</strong></div>
                 <div>{track.artist}</div>
-                <div className='liked-track'><button type="button" className='like-button' >
+                <div>{track.album_title}</div>
+                <div class="likes"><button type="button" className='like-button' >
                   {/* onClick={fetchCurrentSong}> */}
-                  <form id="form-id" method="post" action="https://listen-in.herokuapp.com/tracks/like/1">
-              <img src="https://i.ibb.co/28TYZtK/heart-filled.png" alt="heart-fill" onclick="document.getElementById('form-id').submit();"/>
-            </form>
+                  {/* <form id="form-id" method="post" action="https://listen-in.herokuapp.com/tracks/like/${track.id}"> */}
+              <img src="https://i.ibb.co/28TYZtK/heart-filled.png" class="like-button" alt="heart-fill" onclick="document.getElementById('form-id').submit();"/>
+            {/* </form> */}
                   {/* <img src="https://i.ibb.co/Ny59PtM/heart-outline.png" alt="heart-outline" /> */}
-                </button># users like this</div>
+                </button> # users like this</div> 
               </div>
             </div>
             <hr></hr>
             <div className='track-buttons'>
-              <a href={track.spotify_url}> <img className="spotify-badge" src="https://taylorbennett.co/wp-content/uploads/2018/02/spotify-badge-button.png" /></a>
+              <div> (current user) </div>
+              <div> <a href={track.spotify_url}> <img className="spotify-badge" src="https://taylorbennett.co/wp-content/uploads/2018/02/spotify-badge-button.png" /></a> </div>
             </div>
           </div>
         </div>
@@ -59,6 +61,7 @@ export class Like extends PureComponent {
   render() {
     const { auth } = this.props;
     return (
+      
       <div>
         <div className="liked_tracks">
           {this.renderLikedTracks()}
