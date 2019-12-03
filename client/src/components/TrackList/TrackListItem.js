@@ -44,6 +44,7 @@ export class TrackListItem extends Component {
 
   render() {
     console.log(this.props.tracks.tracks)
+    const nearbyList = this.props.tracks.tracks.filter(nearby => nearby.track_id !== null)
     const settings = {
       dots: true,
       infinite: true,
@@ -62,7 +63,7 @@ export class TrackListItem extends Component {
           {/* <button className='start-broadcast'>Start Broadcasting</button> */}
         </div>
         <Slider {...settings}>
-          {this.props.tracks.tracks.map((track) =>
+          {nearbyList.map((track) =>
             <div key={track.id}>
               <div className='trackitem'>
                 <div className='flex'>

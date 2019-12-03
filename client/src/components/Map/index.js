@@ -21,7 +21,7 @@ export class LightMap extends Component {
       broadcast: "Stop Broadcasting"
     };
     this.startBroadcasting = this.startBroadcasting.bind(this)
-    
+
   }
 
   // When location changes this function triggers the new position to process into state
@@ -29,52 +29,54 @@ export class LightMap extends Component {
     addLocationWatcher(this.props.processNewPosition)
   }
 
-  startBroadcasting () {
+  startBroadcasting() {
     if (this.state.broadcast === 'Stop Broadcasting') {
-    this.setState({broadcast: 'Start Broadcasting'})
+      this.setState({ broadcast: 'Start Broadcasting' })
     } else {
-      this.setState({broadcast: 'Stop Broadcasting'})
+      this.setState({ broadcast: 'Stop Broadcasting' })
     }
   }
-  
+
   render() {
     const { location } = this.props.loc;
     return (
       <React.Fragment>
-      <section className='container'>
-        <Map
-          className='map'
-          style={styleLight}
-          zoom={this.props.loc.zoom}
-          center={location}
-          containerStyle={{
-            height: '500px',
-            width: '100%'
-          }}
-        >
-          <Layer
-            type="symbol"
-            className="marker"
-            layout={{ 'icon-image': 'marker-15' }}>
-            <Feature coordinates={location} />
-          </Layer>
-        </Map>
-        <TrackListItem className='current-song'></TrackListItem>
-        <div id='broadcast-dot'>
-          <img className='green-dot' src='https://i.ibb.co/ZT4PDZJ/glow-button-on.png' />
-          <div className='broadcasting'>Broadcasting Now</div>
-        </div>
-        <div className='nearby-users'>
-          {(this.props.tracks.tracks.length - 1)}
-        </div>
-        {/* <button className='start-broadcast'>Start Broadcasting</button> */}
-      <button className='start-broadcast' onClick={this.startBroadcasting}>{this.state.broadcast}</button>
-      </section>
+        <section className='container'>
+          <Map
+            className='map'
+            style={styleLight}
+            zoom={this.props.loc.zoom}
+            center={location}
+            containerStyle={{
+              height: '90vh',
+              width: '100%'
+            }}
+          >
+            <Layer
+              type="symbol"
+              className="marker"
+              layout={{ 'icon-image': 'marker-15' }}>
+              <Feature coordinates={location} />
+            </Layer>
+          </Map>
+          <div className='current-song'>
+            <TrackListItem></TrackListItem>
+          </div>
+          <div id='broadcast-dot'>
+            <img className='green-dot' src='https://i.ibb.co/ZT4PDZJ/glow-button-on.png' />
+            <div className='broadcasting'>Broadcasting Now</div>
+          </div>
+          <div className='nearby-users'>
+            {(this.props.tracks.tracks.length - 1)}
+          </div>
+          {/* <button className='start-broadcast'>Start Broadcasting</button> */}
+          <button className='start-broadcast' onClick={this.startBroadcasting}>{this.state.broadcast}</button>
+        </section>
         <div className='navbar'>
-          <button className='navbuttons'> <img src='https://i.ibb.co/M5Fx5SJ/home-inactive.png'/></button>
-          <button className='navbuttons'><img src='https://i.ibb.co/XtYQ1mV/user-inactive.png'/></button>
+          <button className='navbuttons'> <img src='https://i.ibb.co/M5Fx5SJ/home-inactive.png' /></button>
+          <button className='navbuttons'><img src='https://i.ibb.co/XtYQ1mV/user-inactive.png' /></button>
         </div>
-        </React.Fragment>
+      </React.Fragment>
     );
   }
 }
