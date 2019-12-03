@@ -29,28 +29,31 @@ export class LightMap extends Component {
     const { location } = this.props.loc;
     return (
       <section className='container'>
-      <Map
-        className='map'
-        style={styleLight}
-        zoom={this.props.loc.zoom}
-        center={location}
-        containerStyle={{
-          height: '500px',
-          width: '100%'
-        }}
-      >
-        <Layer
-          type="symbol"
-          className="marker"
-          layout={{ 'icon-image': 'marker-15' }}>
-          <Feature coordinates={location} />
-        </Layer>
-      </Map>
-      <TrackListItem className='current-song'></TrackListItem>
-      <div id='broadcast-dot'>
-        <img className='green-dot' src='https://i.ibb.co/ZT4PDZJ/glow-button-on.png' />
-        <div className='broadcasting'>Broadcasting Now</div>
-      </div>
+        <Map
+          className='map'
+          style={styleLight}
+          zoom={this.props.loc.zoom}
+          center={location}
+          containerStyle={{
+            height: '500px',
+            width: '100%'
+          }}
+        >
+          <Layer
+            type="symbol"
+            className="marker"
+            layout={{ 'icon-image': 'marker-15' }}>
+            <Feature coordinates={location} />
+          </Layer>
+        </Map>
+        <TrackListItem className='current-song'></TrackListItem>
+        <div id='broadcast-dot'>
+          <img className='green-dot' src='https://i.ibb.co/ZT4PDZJ/glow-button-on.png' />
+          <div className='broadcasting'>Broadcasting Now</div>
+        </div>
+        <div className='nearby-users'>
+          {(this.props.tracks.tracks.length - 1)}
+        </div>
       </section>
     );
   }
@@ -59,7 +62,8 @@ export class LightMap extends Component {
 const mapState = (state) => {
   return {
     auth: state.auth,
-    loc: state.loc
+    loc: state.loc,
+    tracks: state.tracks
   };
 };
 
