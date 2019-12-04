@@ -20,8 +20,7 @@ export class Like extends PureComponent {
   }
 
   fetchLikeTracks() {
-    axios.get(`${api.url}/tracks/liked_tracks?user_id=5`)
-    // axios.get(`${api.url}/tracks/liked_tracks?user_id=${this.props.auth.user.id}`)
+    axios.get(`${api.url}/tracks/liked_tracks?user_id=${this.props.auth.user.id}`)
     .then((response) => {
       this.setState({ tracks: response.data });
     });
@@ -44,14 +43,14 @@ export class Like extends PureComponent {
           <div class="spotify-line">
           <div></div>
           <div>
-              <a href={track.spotify_url}> <img className="spotify-badgeb" src="https://taylorbennett.co/wp-content/uploads/2018/02/spotify-badge-button.png"/></a> 
+              <a href={track.spotify_url}> <img className="spotify-badgeb" src="https://taylorbennett.co/wp-content/uploads/2018/02/spotify-badge-button.png"/></a>
             </div>
             </div>
             </div>
           </div>
-       </div> 
-          
-   
+       </div>
+
+
       )
     }
   }
@@ -62,7 +61,7 @@ export class Like extends PureComponent {
       <div>
         <div className="recently-playedb">
           <div className="pocket-header">
-        My Track Pocket 
+        My Track Pocket
         </div>
           {this.renderLikeTracks()}
         </div>

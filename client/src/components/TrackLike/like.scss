@@ -1,8 +1,5 @@
 body {
-<<<<<<< HEAD
-=======
   background: #ffffff;
->>>>>>> fix/ui
   font-family: 'Open Sans', sans-serif;
   margin-bottom: 70px;
   // @media only screen and (min-width: 800px) {
@@ -58,7 +55,7 @@ body {
 
 .flexb {
   display: flex;
-  flex-direction: row; 
+  flex-direction: row;
   justify-content: space-between;
   @media only screen and (min-width: 800px) {
   }
@@ -92,13 +89,13 @@ body {
 .spotify-badgeb {
   margin-right: 10px;
   margin-left: 120px;
-  margin-top: -20px; 
- 
+  margin-top: -20px;
+
   width: auto;
   height: 4em;
   @media only screen and (min-width: 800px) {
     height: 70px;
-   
+
     }
 }
 
@@ -150,7 +147,7 @@ body {
   // margin: 20px;
   padding-left: 20px;
   padding-right: 20px;
-  
+
 }
 
 .signal-iconb {
@@ -166,10 +163,4 @@ body {
 
 .spotify-buttonb {
   padding-right: 20px;
-<<<<<<< HEAD
-
 }
-=======
-  margin-bottom: -15px;
-}
->>>>>>> fix/ui

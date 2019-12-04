@@ -27,7 +27,7 @@ body {
     margin-top: 40px;
     border: 1px solid white;
     border-radius: 15px;
-  } 
+  }
 }
 
 .flex {
@@ -43,7 +43,7 @@ body {
   @media only screen and (min-width: 1280px) {
     font-size: 14px;
     margin: 10px;
-  } 
+  }
 }
 
 .likes {
@@ -68,7 +68,7 @@ body {
   display: flex;
   flex-direction: row;
   margin-top: 25px;
-  margin-left: 5px;
+  margin-left: -10px;
 }
 
 .user-preview {
@@ -82,7 +82,7 @@ body {
   display: flex;
   color: white;
   display: inline-flex;
-  align-items: center; 
+  align-items: center;
 }
 
 .track-buttons {
@@ -103,11 +103,11 @@ body {
   border-color: transparent;
   width: auto;
   height: auto;
-  margin-left: 5px;
+  margin-left: -10px;
 }
 
 .spotify-button {
   margin: auto;
 
- 
+
 }
