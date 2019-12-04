@@ -19,9 +19,9 @@ export class LightMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      broadcast: "Stop Broadcasting"
+
     };
-    this.startBroadcasting = this.startBroadcasting.bind(this)
+
 
   }
 
@@ -46,10 +46,10 @@ export class LightMap extends Component {
 
   getNearbyCount() {
     if (this.props.tracks.tracks.length <= 1) {
-      return (    
+      return (
       <div className='nearby-users'>{0}</div>)
     } else {
-      return (    
+      return (
         <div className='nearby-users'>{(this.props.tracks.tracks.length - 1)}</div>)
     }
   }
@@ -83,9 +83,7 @@ export class LightMap extends Component {
             <img className='green-dot' src='https://i.ibb.co/ZT4PDZJ/glow-button-on.png' />
             <div className='broadcasting'>Broadcasting Now</div>
           </div>
-          {this.getNearbyCount()} 
-          {/* <button className='start-broadcast'>Start Broadcasting</button> */}
-          <button className='start-broadcast' onClick={this.startBroadcasting}>{this.state.broadcast}</button>
+          {this.getNearbyCount()}
         </section>
         <div className='navbar'>
           <Link className='navbuttons' to='/map'><img src='https://i.ibb.co/M5Fx5SJ/home-inactive.png' /></Link>

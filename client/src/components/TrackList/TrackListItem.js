@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import "./TrackListItem.scss";
-// import "components/TrackList.scss";
 import Slider from 'react-slick';
 import TrackLike from '../TrackLike';
-// import './TrackListItem.css';
 import { fetchCurrentSong, fetchAllNearby } from './redux';
 import axios from 'axios'
 import api from '../../utils/api';
@@ -32,29 +30,12 @@ export class TrackListItem extends Component {
   async likeTrack(track_id) {
     try {
       await axios.post(`${api.url}/tracks/like/${track_id}?user_id=${this.props.auth.user.id}`);
-      // const likes = await axios.get(`${api.url}/tracks/liked_count/${track_id}`);
-      // this.setState({ count: likes.data });
 
     } catch (e) {
       console.log('error liking track', e);
     }
   };
 
-  // renderSongTitle() {
-  //   if (track.track.title.length > 22) {
-  //     return <marquee behaviour='slide' direction='left'>{track.track.title}</marquee>
-  //   } else {
-  //     return <div>{track.track.title}</div>
-  //   }
-  // }
-
-  // renderSongArtist() {
-  //   if (track.track.artist.length > 22) {
-  //     return <marquee behaviour='slide' direction='left'>{track.track.artist}</marquee>
-  //   } else {
-  //     return <div>{track.track.artist}</div>
-  //   }
-  // }
 
   render() {
     const nearbyList = this.props.tracks.tracks.filter(nearby => nearby.track_id !== null)
@@ -74,7 +55,6 @@ export class TrackListItem extends Component {
       <React.Fragment>
         <div className='nearby-broadcasting'>
           <div style={{ color: '#8f27db' }}>Playing Nearby</div>
-          {/* <button className='start-broadcast'>Start Broadcasting</button> */}
         </div>
         <Slider {...settings}>
           {nearbyList.map((track) =>

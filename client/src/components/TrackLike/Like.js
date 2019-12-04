@@ -34,12 +34,9 @@ export class Like extends PureComponent {
       <div className='trackitemb'>
 
           <iframe className='current-track-imageb' src={`https://open.spotify.com/embed/track/${track.spotify_uuid}`} width="80" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-
-          {/* <div className="flexb">  */}
           <div className='track-textb'>
             <div><strong>{track.title}</strong></div>
             <div>{track.artist}</div><br></br>
-          {/* </div> */}
           <div class="spotify-line">
           <div></div>
           <div>
@@ -78,8 +75,6 @@ export class Like extends PureComponent {
 const mapState = (state) => {
   return {
     auth: state.auth,
-    // recent: state.recent
-    //locations: state.locations build this
   };
 };
 

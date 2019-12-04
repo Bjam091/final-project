@@ -4,8 +4,6 @@ import api from '../../utils/api';
 import './recent.scss';
 import { connect } from 'react-redux';
 
-// const numLikes = api/users/1/liked_tracks.count;
-
 export class Like extends PureComponent {
   constructor(props) {
     super(props);
@@ -44,7 +42,7 @@ export class Like extends PureComponent {
                     <img src="https://i.ibb.co/28TYZtK/heart-filled.png" class="like-button" alt="heart-fill" onclick="document.getElementById('form-id').submit();"/>
             {/* </form> */}
                   {/* <img src="https://i.ibb.co/Ny59PtM/heart-outline.png" alt="heart-outline" /> */}
-                   </button> # users like this</div> 
+                   </button> # users like this</div>
               </div>
             </div>
             <hr></hr>
@@ -61,7 +59,7 @@ export class Like extends PureComponent {
   render() {
     const { auth } = this.props;
     return (
-      
+
       <div>
         <div className="liked_tracks">
           {this.renderLikedTracks()}
