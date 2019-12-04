@@ -1,6 +1,7 @@
 body {
   font-family: 'Open Sans', sans-serif;
-  @media only screen and (min-width: 1280px) {
+  line-height: 1.8;
+  @media only screen and (min-width: 700px) {
     background: linear-gradient(to bottom right, #f3eeff, #15055d) fixed;
     margin-top: 50px;
   }
@@ -19,18 +20,19 @@ body {
   padding-top: 10px;
   padding-left: 10px;
 
-  @media only screen and (min-width: 1280px) {
+  @media only screen and (min-width: 700px) {
     width: 45vw;
     height: 175px;
     margin: auto;
     margin-top: 40px;
     border: 1px solid white;
-    font-family: Veranda, sans-serif;
+    border-radius: 15px;
   } 
 }
 
 .flex {
   display: flex;
+  justify-content: space-between;
 }
 
 .track-text {
@@ -41,7 +43,6 @@ body {
   @media only screen and (min-width: 1280px) {
     font-size: 14px;
     margin: 10px;
-    font-family: Calibri, sans-serif;
   } 
 }
 
@@ -102,6 +103,7 @@ body {
   border-color: transparent;
   width: auto;
   height: auto;
+  margin-left: 5px;
 }
 
 .spotify-button {

@@ -37,13 +37,14 @@ export class Like extends PureComponent {
               <div className='track-text'>
                 <div><strong>{track.title}</strong></div>
                 <div>{track.artist}</div>
-                <div class="likes"><button type="button" className='like-button' >
+                <div class="likes">
+                  <button type="button" className='like-button' >
                   {/* onClick={fetchCurrentSong}> */}
                   {/* <form id="form-id" method="post" action="https://listen-in.herokuapp.com/tracks/like/${track.id}"> */}
-              <img src="https://i.ibb.co/28TYZtK/heart-filled.png" class="like-button" alt="heart-fill" onclick="document.getElementById('form-id').submit();"/>
+                    <img src="https://i.ibb.co/28TYZtK/heart-filled.png" class="like-button" alt="heart-fill" onclick="document.getElementById('form-id').submit();"/>
             {/* </form> */}
                   {/* <img src="https://i.ibb.co/Ny59PtM/heart-outline.png" alt="heart-outline" /> */}
-                </button> # users like this</div> 
+                   </button> # users like this</div> 
               </div>
             </div>
             <hr></hr>
