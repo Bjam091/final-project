@@ -3,6 +3,8 @@ import axios from 'axios';
 import api from '../../utils/api';
 import './like.scss';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import '../../App.css'
 
 export class Like extends PureComponent {
   constructor(props) {
@@ -63,6 +65,10 @@ export class Like extends PureComponent {
         <h1>My Track Pocket</h1> 
         </div>
           {this.renderLikeTracks()}
+        </div>
+        <div className='navbar'>
+          <Link className='navbuttons' to='/map'><img src='https://i.ibb.co/M5Fx5SJ/home-inactive.png' /></Link>
+          <Link className='navbuttons' to='/track-pocket'><img src='https://i.ibb.co/XtYQ1mV/user-inactive.png' /></Link>
         </div>
       </div>
     );

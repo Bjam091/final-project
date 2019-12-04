@@ -5,6 +5,7 @@ import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
 import { addLocationWatcher } from '../../helpers/mapHelpers'
 import { processNewPosition, addCoordsToUser } from './redux';
 import TrackListItem from '../TrackList/TrackListItem'
+import { Link } from 'react-router-dom';
 
 // Create Map
 const accessToken = 'pk.eyJ1IjoianVsaWFqNjIxIiwiYSI6ImNrM2VxdnlmbzAxM2MzaHBhOXQ2Z2RibTAifQ.dVzPBLFX3oJ1-DHsz4dCOA'
@@ -28,7 +29,7 @@ export class LightMap extends Component {
   componentDidMount() {
     addLocationWatcher(this.props.processNewPosition)
     this.props.addCoordsToUser(this.props.auth.user.id, this.props.loc.location[1], this.props.loc.location[0])
-    this.sendLocation = setInterval(() => this.props.addCoordsToUser(this.props.auth.user.id, this.props.loc.location[1], this.props.loc.location[0]), 180000)
+    this.sendLocation = setInterval(() => this.props.addCoordsToUser(this.props.auth.user.id, this.props.loc.location[1], this.props.loc.location[0]), 20000)
   }
 
   componentWillUnmount() {
@@ -87,8 +88,8 @@ export class LightMap extends Component {
           <button className='start-broadcast' onClick={this.startBroadcasting}>{this.state.broadcast}</button>
         </section>
         <div className='navbar'>
-          <button className='navbuttons'> <img src='https://i.ibb.co/M5Fx5SJ/home-inactive.png' /></button>
-          <button className='navbuttons'><img src='https://i.ibb.co/XtYQ1mV/user-inactive.png' /></button>
+          <Link className='navbuttons' to='/map'><img src='https://i.ibb.co/M5Fx5SJ/home-inactive.png' /></Link>
+          <Link className='navbuttons' to='/track-pocket'><img src='https://i.ibb.co/XtYQ1mV/user-inactive.png' /></Link>
         </div>
       </React.Fragment>
     );
