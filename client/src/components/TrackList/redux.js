@@ -1,7 +1,7 @@
 import axios from 'axios';
+import api from '../../utils/api';
 export const UPDATE_CURRENT_SONG = 'UPDATE_CURRENT_SONG';
 export const UPDATE_NEARBY_TRACKS = 'UPDATE_NEARBY_TRACKS'
-import api from '../../utils/api';
 
 const INITIAL_STATE = {
   tracks: []

@@ -1,12 +1,11 @@
 body {
-  background: linear-gradient(to bottom right, #f3eeff, #15055d) fixed;
   font-family: 'Open Sans', sans-serif;
   margin-bottom: 70px;
-  @media only screen and (min-width: 800px) {
-  
-    margin-top: 50px;
- 
-  }
+  // @media only screen and (min-width: 800px) {
+  //
+  //   margin-top: 50px;
+  //
+  // }
 }
 
 .pocket-header {
@@ -17,9 +16,9 @@ body {
   display: flex;
   justify-content: center;
   @media only screen and (min-width: 800px) {
-  
+
     font-size: 24pt;
- 
+
   }
 }
 
@@ -41,7 +40,7 @@ body {
   margin-top: 40px;
   border: 1px solid white;
 
- 
+
   @media only screen and (min-width: 800px) {
     width: 60vw;
     height: 120px;
@@ -49,7 +48,7 @@ body {
     margin-top: 40px;
     border: 1px solid white;
     border-radius: 10px;
-  } 
+  }
 }
 
 .flexb {
@@ -69,7 +68,7 @@ body {
     font-size: 14px;
     margin: 10px;
     font-family: Calibri, sans-serif;
-  } 
+  }
 }
 
 .likesb {
@@ -112,7 +111,7 @@ body {
   display: flex;
   color: white;
   display: inline-flex;
-  align-items: center; 
+  align-items: center;
 }
 
 .track-buttonsb {
@@ -137,5 +136,5 @@ body {
 
 .spotify-buttonb {
   padding-right: 20px;
-  
+
 }

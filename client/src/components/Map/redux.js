@@ -1,4 +1,5 @@
-import axios from "axios";
+import axios from 'axios';
+import api from '../../utils/api';
 
 export const UPDATE_LOCATION = 'UPDATE_LOCATION';
 
@@ -19,7 +20,7 @@ export default (state = INITIAL_STATE, action = {}) => {
   }
 };
 
-// Function to change location state 
+// Function to change location state
 export function processNewPosition(pos) {
   return async (dispatch) => {
     try {
@@ -40,7 +41,7 @@ export function processNewPosition(pos) {
 export function addCoordsToUser(userId, latitude, longitude) {
   return async () => {
     try {
-        await axios.put(`https://listen-in.herokuapp.com/users/coords?user_id=${userId}`, {
+        await axios.put(`${api.url}/users/coords?user_id=${userId}`, {
           "coords": {
             "latitude": latitude,
             "longitude": longitude
