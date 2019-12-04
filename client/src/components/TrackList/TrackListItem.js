@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import "components/TrackListItem.scss";
+import "./TrackListItem.scss";
 // import "components/TrackList.scss";
 import Slider from 'react-slick';
 import TrackLike from '../TrackLike';
-import './TrackListItem.css';
+// import './TrackListItem.css';
 import { fetchCurrentSong, fetchAllNearby } from './redux';
 import axios from 'axios'
 import api from '../../utils/api';
@@ -40,10 +40,20 @@ export class TrackListItem extends Component {
     }
   };
 
-  // renderLikes(track_id) {
-  //   return (
-  //     <TrackLike track_id={track_id} />
-  //   )
+  // renderSongTitle() {
+  //   if (track.track.title.length > 22) {
+  //     return <marquee behaviour='slide' direction='left'>{track.track.title}</marquee>
+  //   } else {
+  //     return <div>{track.track.title}</div>
+  //   }
+  // }
+
+  // renderSongArtist() {
+  //   if (track.track.artist.length > 22) {
+  //     return <marquee behaviour='slide' direction='left'>{track.track.artist}</marquee>
+  //   } else {
+  //     return <div>{track.track.artist}</div>
+  //   }
   // }
 
   render() {
@@ -72,13 +82,15 @@ export class TrackListItem extends Component {
                 <div className='flex'>
                   <iframe className='current-track-image' src={`https://open.spotify.com/embed/track/${track.track.spotify_uuid}`} width="80" height="80" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                   <div className='track-text'>
+                  <marquee classname='marquee'scrolldelay='200'>
                     <div>{track.track.title}</div>
+                    </marquee>
                     <div>{track.track.artist}</div>
                     <div className='liked-track'>
                       <button type="button" className='like-button' onClick={() => this.likeTrack(track.track.id)}>
                         <img src="https://i.ibb.co/28TYZtK/heart-filled.png" alt="heart-fill" />
                       </button>
-                  </div>
+                    </div>
                   </div>
                 </div>
                 <hr></hr>

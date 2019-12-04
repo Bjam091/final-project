@@ -1,4 +1,4 @@
-.trackitem {
+/* .trackitem {
   background: linear-gradient(to bottom right, #b169e6, #8f27db);
   height: 150px;
   border-radius: 5px;
@@ -17,8 +17,6 @@
 }
 
 .current-track-image {
-  /* height: 75px;
-  width: 75px; */
   margin-top: 5px;
   margin-left: 15px;
   margin-right: 10px;
@@ -85,4 +83,4 @@
 .stop-broadcast {
   color: red;
   border-color: red;
-}
+} */
