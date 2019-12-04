@@ -22,7 +22,7 @@ export class Like extends PureComponent {
   fetchLikeTracks() {
     axios.get(`${api.url}/tracks/liked_tracks?user_id=${this.props.auth.user.id}`)
     .then((response) => {
-      this.setState({ tracks: response.data });
+      this.setState({ tracks: response.data.reverse() });
     });
   }
 

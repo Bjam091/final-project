@@ -20,8 +20,8 @@ export class TrackListItem extends Component {
   componentDidMount() {
     this.props.fetchAllNearby(this.props.auth.user.latitude, this.props.auth.user.longitude)
     this.props.fetchCurrentSong(this.props.auth.jwt.jwt)
-    this.timer = setInterval(() => { this.props.fetchAllNearby(this.props.auth.user.latitude, this.props.auth.user.longitude) }, 20000);
-    this.current = setInterval(() => { this.props.fetchCurrentSong(this.props.auth.jwt.jwt) }, 20000);
+    this.timer = setInterval(() => { this.props.fetchAllNearby(this.props.auth.user.latitude, this.props.auth.user.longitude) }, 2000);
+    this.current = setInterval(() => { this.props.fetchCurrentSong(this.props.auth.jwt.jwt) }, 2000);
   }
 
   componentWillUnmount() {
@@ -58,6 +58,7 @@ export class TrackListItem extends Component {
 
   render() {
     const nearbyList = this.props.tracks.tracks.filter(nearby => nearby.track_id !== null)
+    nearbyList.sort((a, b) => a.id - b.id);
     const settings = {
       dots: true,
       infinite: true,
@@ -77,7 +78,7 @@ export class TrackListItem extends Component {
         </div>
         <Slider {...settings}>
           {nearbyList.map((track) =>
-            <div key={track.id}>
+            <div key={track.track_id}>
               <div className='trackitem'>
                 <div className='flex'>
                   <iframe className='current-track-image' src={`https://open.spotify.com/embed/track/${track.track.spotify_uuid}`} width="80" height="80" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
