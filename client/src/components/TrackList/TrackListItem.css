@@ -29,7 +29,7 @@
 
 .liked-track {
   margin-top: 25px;
-  margin-left: 5px;
+  margin-left: -5px;
 }
 
 .user-preview {
@@ -39,11 +39,11 @@
   border-radius: 5px;
   border-color: #8f27db;
   margin-top: 5px;
-  font-size: 10px;
+  font-size: 12px;
   display: flex;
   color: white;
   display: inline-flex;
-  align-items: center; 
+  align-items: center;
 }
 
 .track-buttons {

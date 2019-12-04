@@ -1,39 +1,43 @@
 body {
-  background: linear-gradient(to bottom right, #f3eeff, #15055d) fixed;
+<<<<<<< HEAD
+=======
+  background: #ffffff;
+>>>>>>> fix/ui
   font-family: 'Open Sans', sans-serif;
   margin-bottom: 70px;
-  @media only screen and (min-width: 800px) {
-  
-    margin-top: 50px;
- 
-  }
+  // @media only screen and (min-width: 800px) {
+  //
+  //   margin-top: 50px;
+  //
+  // }
 }
 
 .pocket-header {
-  font-family: "Sulphur Point", sans-serif;
-  color: rgb(75, 62, 107);
-  font-size: 18pt;
-  margin: auto;
+  font-family: "Rubik", sans-serif;
+  color: rgb(105, 92, 138);
+  font-size: 24pt;
+  padding-top: 25px;
+  margin-bottom: -10px;
   display: flex;
   justify-content: center;
   @media only screen and (min-width: 800px) {
-  
+
     font-size: 24pt;
- 
+
   }
 }
 
 .trackitemb {
-  background: linear-gradient(to bottom right, #8f70a3, #391950);
+  background: linear-gradient(to bottom right, #b413ff, #1872e7);
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  height: 120px;
+  // justify-content: space-around;
+  height: 115px;
   border-radius: 10px;
   color: white;
   opacity: 0.9;
   // margin: 10px;
-  padding-top: 10px;
+  padding-top: 15px;
   padding-left: 10px;
 
   width: 90vw;
@@ -41,7 +45,7 @@ body {
   margin-top: 40px;
   border: 1px solid white;
 
- 
+
   @media only screen and (min-width: 800px) {
     width: 60vw;
     height: 120px;
@@ -49,19 +53,19 @@ body {
     margin-top: 40px;
     border: 1px solid white;
     border-radius: 10px;
-  } 
+  }
 }
 
 .flexb {
   display: flex;
-  flex-direction: row;
-  @media only screen and (min-width: 800px) {
+  flex-direction: row; 
   justify-content: space-between;
+  @media only screen and (min-width: 800px) {
   }
 }
 
 .track-textb {
-  font-size: 16px;
+  font-size: 12px;
   margin: 5px;
   line-height: 1.8;
 
@@ -69,7 +73,7 @@ body {
     font-size: 14px;
     margin: 10px;
     font-family: Calibri, sans-serif;
-  } 
+  }
 }
 
 .likesb {
@@ -82,16 +86,40 @@ body {
   width: 75px; */
   margin-top: 5px;
   margin-left: 15px;
-  margin-right: 10px;
+  // margin-right: 10px;
 }
 
 .spotify-badgeb {
+  margin-right: 10px;
+  margin-left: 120px;
+  margin-top: -20px; 
+ 
   width: auto;
-  height: 65px;
-  margin-top: 10px;
+  height: 4em;
   @media only screen and (min-width: 800px) {
     height: 70px;
+   
     }
+}
+
+.column {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: left;
+
+}
+
+.spotify-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: right;
+  padding-top: -20px;
+}
+
+.empty {
+  width: 30%;
 }
 
 .liked-trackb {
@@ -112,7 +140,7 @@ body {
   display: flex;
   color: white;
   display: inline-flex;
-  align-items: center; 
+  align-items: center;
 }
 
 .track-buttonsb {
@@ -122,6 +150,7 @@ body {
   // margin: 20px;
   padding-left: 20px;
   padding-right: 20px;
+  
 }
 
 .signal-iconb {
@@ -137,5 +166,10 @@ body {
 
 .spotify-buttonb {
   padding-right: 20px;
-  
+<<<<<<< HEAD
+
 }
+=======
+  margin-bottom: -15px;
+}
+>>>>>>> fix/ui
