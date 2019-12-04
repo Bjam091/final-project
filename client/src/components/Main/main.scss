@@ -2,7 +2,10 @@
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  margin: 100px 0px 170px 0px;
+  margin: 40px 0px 170px 0px;
+  @media only screen and (min-width: 800px) {
+    margin: 100px 0px 170px 0px;
+  }
 
   .spotify-button {
     width: 250px;
@@ -31,5 +34,30 @@
       width: 260px;
       border-radius: 10px;
     }
+  }
+}
+
+.splash-header {
+  justify-content: center;
+  margin: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-family: "Rubik", sans-serif;
+  color: #523c85;
+
+}
+.head1 {
+  font-size: 20pt;
+  margin-bottom: 10px;
+  @media only screen and (min-width: 800px) {
+  font-size: 40pt;
+  margin-bottom: 20px;
+  }
+}
+
+.head2 {
+  font-size: 14pt;
+  @media only screen and (min-width: 800px) {
+  font-size: 20pt;
   }
 }

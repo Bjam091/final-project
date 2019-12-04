@@ -39,6 +39,10 @@ export default class Main extends PureComponent {
         <div className="artist-grid">
           {this.renderTracks()}
         </div>
+        <div class="splash-header" align="center">
+          <div class="head1">ListenIn </div>
+          <div class="head2">See what people around you are listening to.</div>
+        </div>
         <div className="spotify-wrapper">
           <img
           onClick={() => window.location.href = `${api.url}/authorize` }

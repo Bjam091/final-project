@@ -20,7 +20,8 @@ export class Like extends PureComponent {
   }
 
   fetchLikeTracks() {
-    axios.get(`${api.url}/tracks/liked_tracks?user_id=${this.props.auth.user.id}`)
+    axios.get(`${api.url}/tracks/liked_tracks?user_id=5`)
+    // axios.get(`${api.url}/tracks/liked_tracks?user_id=${this.props.auth.user.id}`)
     .then((response) => {
       this.setState({ tracks: response.data });
     });
@@ -32,24 +33,25 @@ export class Like extends PureComponent {
       return tracks.map((track) =>
       <div>
       <div className='trackitemb'>
-      
-        <div className='flexb'>
-          
+
           <iframe className='current-track-imageb' src={`https://open.spotify.com/embed/track/${track.spotify_uuid}`} width="80" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
+          {/* <div className="flexb">  */}
           <div className='track-textb'>
             <div><strong>{track.title}</strong></div>
-            <div>{track.artist}</div>
-            <div class="likesb"><button type="button" className='like-buttonb' >
-       
-          <img src="https://i.ibb.co/28TYZtK/heart-filled.png" class="like-buttonb" alt="heart-fill" onclick="document.getElementById('form-id').submit();"/>
-       
-            </button># users like this</div> 
+            <div>{track.artist}</div><br></br>
+          {/* </div> */}
+          <div class="spotify-line">
+          <div></div>
+          <div>
+              <a href={track.spotify_url}> <img className="spotify-badgeb" src="https://taylorbennett.co/wp-content/uploads/2018/02/spotify-badge-button.png"/></a> 
+            </div>
+            </div>
             </div>
           </div>
-          <div class="spotify-buttonb"> <a href={track.spotify_url}> <img className="spotify-badgeb" src="https://taylorbennett.co/wp-content/uploads/2018/02/spotify-badge-button.png"/></a> </div>
-     
-      </div>
-    </div>
+       </div> 
+          
+   
       )
     }
   }
@@ -60,7 +62,7 @@ export class Like extends PureComponent {
       <div>
         <div className="recently-playedb">
           <div className="pocket-header">
-        <h1>My Track Pocket</h1> 
+        My Track Pocket 
         </div>
           {this.renderLikeTracks()}
         </div>
