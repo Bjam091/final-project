@@ -28,7 +28,7 @@ export class TrackLike extends Component {
 
   async likeTrack(track_id) {
     try {
-      const data = await axios.post(`${api.url}/tracks/like/${track_id}?user_id=${this.props.auth.user.id}`);
+      await axios.post(`${api.url}/tracks/like/${track_id}?user_id=${this.props.auth.user.id}`);
       const likes = await axios.get(`${api.url}/tracks/liked_count/${track_id}`);
       this.setState({ count: likes.data });
 
@@ -39,7 +39,7 @@ export class TrackLike extends Component {
 
   async unlikeTrack(track_id) {
     try {
-      const data = await axios.post(`${api.url}/tracks/unlike/${track_id}?user_id=${this.props.auth.user.id}`);
+      await axios.post(`${api.url}/tracks/unlike/${track_id}?user_id=${this.props.auth.user.id}`);
       const likes = await axios.get(`${api.url}/tracks/liked_count/${track_id}`);
       this.setState({ count: likes.data });
 

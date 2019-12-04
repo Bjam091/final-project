@@ -6,6 +6,8 @@ import Slider from 'react-slick';
 import TrackLike from '../TrackLike';
 import './TrackListItem.css';
 import { fetchCurrentSong, fetchAllNearby } from './redux';
+import axios from 'axios'
+import api from '../../utils/api';
 
 export class TrackListItem extends Component {
   constructor(props) {
@@ -18,8 +20,8 @@ export class TrackListItem extends Component {
   componentDidMount() {
     this.props.fetchAllNearby(this.props.auth.user.latitude, this.props.auth.user.longitude)
     this.props.fetchCurrentSong(this.props.auth.jwt.jwt)
-    this.timer = setInterval(() => {this.props.fetchAllNearby(this.props.auth.user.latitude, this.props.auth.user.longitude)} , 180000);
-    this.current = setInterval(() => {this.props.fetchCurrentSong(this.props.auth.jwt.jwt)} , 180000);
+    this.timer = setInterval(() => { this.props.fetchAllNearby(this.props.auth.user.latitude, this.props.auth.user.longitude) }, 20000);
+    this.current = setInterval(() => { this.props.fetchCurrentSong(this.props.auth.jwt.jwt) }, 20000);
   }
 
   componentWillUnmount() {
@@ -27,11 +29,22 @@ export class TrackListItem extends Component {
     this.current = null;
   }
 
-  renderLikes(track_id) {
-    return (
-      <TrackLike track_id={track_id} />
-    )
-  }
+  async likeTrack(track_id) {
+    try {
+      await axios.post(`${api.url}/tracks/like/${track_id}?user_id=${this.props.auth.user.id}`);
+      // const likes = await axios.get(`${api.url}/tracks/liked_count/${track_id}`);
+      // this.setState({ count: likes.data });
+
+    } catch (e) {
+      console.log('error liking track', e);
+    }
+  };
+
+  // renderLikes(track_id) {
+  //   return (
+  //     <TrackLike track_id={track_id} />
+  //   )
+  // }
 
   render() {
     const nearbyList = this.props.tracks.tracks.filter(nearby => nearby.track_id !== null)
@@ -61,13 +74,17 @@ export class TrackListItem extends Component {
                   <div className='track-text'>
                     <div>{track.track.title}</div>
                     <div>{track.track.artist}</div>
-                    {this.renderLikes(track.track.id)}
+                    <div className='liked-track'>
+                      <button type="button" className='like-button' onClick={() => this.likeTrack(track.track.id)}>
+                        <img src="https://i.ibb.co/28TYZtK/heart-filled.png" alt="heart-fill" />
+                      </button>
+                  </div>
                   </div>
                 </div>
                 <hr></hr>
                 <div className='track-buttons'>
                   <button className='user-preview'><img className='signal-icon' src="https://i.ibb.co/CJStwTB/signal.png" alt="" />{track.spotify_username}</button>
-                  <a href={track.track.spotify_url}> <img className="spotify-badge" src="https://taylorbennett.co/wp-content/uploads/2018/02/spotify-badge-button.png" alt=""/></a>
+                  <a href={track.track.spotify_url}> <img className="spotify-badge" src="https://taylorbennett.co/wp-content/uploads/2018/02/spotify-badge-button.png" alt="" /></a>
                 </div>
               </div>
             </div>
