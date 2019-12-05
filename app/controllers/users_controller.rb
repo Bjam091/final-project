@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     if (!!request.query_string)
       @res = SpotifyService.fetch_tokens(request.query_string) #query string contains "code"
     end
-    redirect_to "http://192.168.88.253:3000/auth?user=#{@res["display_name"]}"
+    redirect_to "http://192.168.88.187:3000/auth?user=#{@res["display_name"]}"
   end
 
   def current
