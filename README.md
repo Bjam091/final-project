@@ -28,6 +28,8 @@ ListenIn is a mobile-first web application that allows users to connect their Sp
 - SCSS
 - Spotify API
 - Mapbox
+- Redux
+
 ## Getting Started
 First, fork this repo so you get your own copy of it. Once you have done that, you can clone your new repo to your machine, and get started.
 
