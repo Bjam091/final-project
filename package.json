@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/NimaBoscarino/stigma#readme",
   "dependencies": {
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "slick-carousel": "^1.8.1"
   }
 }
